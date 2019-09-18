@@ -1,0 +1,30 @@
+function testPromise(flag) {
+        return new Promise((resolve, reject) => {
+            if(flag) {
+                const obj = {
+                    user: 'zs',
+                    token: '666'
+                }
+                resolve(obj)
+            } else {
+                const err = {
+                    errMessage: 'err message'
+                }
+                reject(err)
+            }
+        })
+    }
+    async function getResult() {
+        try {
+            const res = await testPromise(false)
+            console.log(res)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    getResult()
+testPromise(true).then(res => {
+        console.log(res)
+    },err => {
+        console.log(err)
+    })

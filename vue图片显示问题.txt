@@ -1,0 +1,21 @@
+<img v-for='(item) in imgList' :src="item" alt="">
+imgList: [
+require("../../assets/logo.png"),
+require("../../assets/logo.png"),
+require("../../assets/logo.png"),
+],
+可以
+imgList: [
+"../../assets/logo.png",
+"../../assets/logo.png",
+"../../assets/logo.png"
+],
+不可以
+imgList: [
+                    "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=508387608,2848974022&fm=26&gp=0.jpg",
+                    "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1901600690,2735789840&fm=26&gp=0.jpg",
+                    "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1563980539,1672265910&fm=26&gp=0.jpg"
+],
+可以
+网络地址可以
+本地相对路径要用require

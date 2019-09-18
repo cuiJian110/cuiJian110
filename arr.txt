@@ -1,0 +1,12 @@
+    const arr = [1,2,3]
+    console.log(arr) //[1, 2, 3]
+    const arr1 = arr
+    arr.push(4)
+    console.log(arr1)//[1, 2, 3, 4]
+
+变量和函数的优先顺序，先变量后函数。当变量名和函数名一致时后者会覆盖前者，
+function b() {
+    }
+    var b
+    console.log(typeof b)
+结果为function，这就证实了，我们刚才的结论，执行顺序先变量后函数，变量名一致时，函数就会覆盖变量。

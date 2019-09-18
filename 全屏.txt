@@ -1,0 +1,58 @@
+<body>
+    <button onclick='handleQuanping()'>quanping</button>
+    <button onclick='launchIntoFullscreen(div1)'>div1_quanping</button>
+    <button onclick='launchIntoFullscreen(div2)'>div2_quanping</button>
+    <div id='div1' onclick='handleDiv1()'>div1</div>
+    <div id='div2'>div2</div>
+    <button onclick='handleAlert()'>getStatus</button>
+</body>
+document.addEventListener('click',function() {
+        console.log(isFullscreen())
+    })
+    const div1 = document.querySelector('#div1')
+    const div2 = document.querySelector('#div2')
+    function handleQuanping() {
+        var el = document.documentElement;
+        var rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullscreen;      
+        if(typeof rfs != "undefined" && rfs) {
+            rfs.call(el);
+        };
+        return;
+    }
+    function launchIntoFullscreen(element) { 
+        if(element.requestFullscreen){ 
+            element.requestFullscreen(); 
+        }
+        else if(element.mozRequestFullScreen) {
+            element.mozRequestFullScreen(); 
+        } 
+        else if(element.webkitRequestFullscreen) { 
+            element.webkitRequestFullscreen(); 
+        } 
+        else if(element.msRequestFullscreen) { 
+            element.msRequestFullscreen(); 
+        }
+    }
+    function exitFullscreen() {
+        if(document.exitFullscreen) {
+            document.exitFullscreen(); 
+        } else if(document.mozCancelFullScreen) {
+            document.mozCancelFullScreen(); 
+        } else if(document.webkitExitFullscreen) { 
+            document.webkitExitFullscreen(); 
+        } 
+    }
+    function isFullscreen(){
+        if(navigator.userAgent.indexOf("Firefox")!=-1) {
+            return document.mozFullScreen;
+        } else if(navigator.userAgent.indexOf("Chrome")!=-1) {
+            return document.webkitIsFullScreen;
+        }
+        return document.fullscreen;
+    }
+    function handleAlert() {
+        alert(isFullscreen())
+    }
+    function handleDiv1() {
+        console.log('woshi div1')
+    }

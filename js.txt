@@ -1,0 +1,21 @@
+const obj = {
+        // children: [],
+        plat: 'linux'
+    }
+    if(obj.children) {
+        console.log('有children')
+    } else {
+        console.log('没有children')
+    }
+//没有children
+
+const obj = {
+        children: [],
+        plat: 'linux'
+    }
+    if(obj.children) {
+        console.log('有children')
+    } else {
+        console.log('没有children')
+    }
+有children

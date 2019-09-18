@@ -1,0 +1,44 @@
+
+msgΪ���� �����ַ���
+formatJson(msg) {
+  var rep = "~";
+  var jsonStr = JSON.stringify(msg, null, rep)
+  var str = "";
+  for (var i = 0; i < jsonStr.length; i++) {
+    var text2 = jsonStr.charAt(i)
+    if (i > 1) {
+      var text = jsonStr.charAt(i - 1)
+      if (rep != text && rep == text2) {
+        str += "<br/>"
+      }
+    }
+    str += text2;
+  }
+  jsonStr = "";
+  for (var i = 0; i < str.length; i++) {
+    var text = str.charAt(i);
+    if (rep == text)
+      jsonStr += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+    else {
+      jsonStr += text;
+    }
+    if (i == str.length - 2)
+      jsonStr += "<br/>"
+  }
+  return jsonStr;
+},
+
+render: (h,p) => {
+  let str = p.row[this.Columns]
+  try {
+      str = this.formatJson(JSON.parse(p.row[this.Columns]))
+  } catch (err) {
+  }
+  const strn1 = str.replace(/true/g, '<span style="background-color: green">true</span>')
+  const strn2 = strn1.replace(/false/g, '<span style="color: red">false</span>')
+  return h('div',{
+    domProps: {
+      innerHTML: strn2
+    }
+  })
+}

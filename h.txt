@@ -1,0 +1,911 @@
+5572313
+999666
+
+git init 
+git add .
+git commit -m 'miaoshu'
+查看状态
+git status
+查看提交记录
+git log
+git log --oneline
+查看所有操作记录
+git reflog
+版本回退
+git reset --hard 版本号
+查看分支
+git branch 
+切换分支
+git checkout -b header
+切换到主分支 把header分支合并到主分支
+git checkout master
+git merge header
+删除分支
+git branch -d header
+
+切新的分支前要git pull
+做新的功能要切新的分支
+远程分支也是直接用vsCode推送，gitlab会出现新的分支，可以合并删除
+
+git checkout dev
+git checkout -b tablegundongtiao
+git add .
+git commit -m 'miaoshu'
+git push
+git checkout dev
+git merge tablegundongtiao
+git push
+
+
+在之前用github时，在我们开发一部分功能后，想往远程仓库push时，为了避免冲突，到底是先pull还是先commit，今天终于有了答案。
+
+??
+git不同于其他版本控制系统之处是git是分布式，有远程仓库和本地仓库，本地仓库没有网也可以继续工作，
+也可以把我们修改的代码commit到本地仓库，所以先commit后push，
+一个功能可以分成很多块，当我们开发完一块后，就可以commit一次，并说明这部分是做什么的，方便merge request时审核人理解你的代码。
+当我们完成整个功能后，进行一次push，push后发起merge request请求合并到develop分支。
+
+shift()改变原数组 返回第一项
+splice（）改变原数组 返回被删除的数组
+
+    console.log(typeof 111)//number
+    console.log(typeof '111')//string
+    console.log(typeof true)//boolean
+    console.log(typeof undefined)//undefined
+    console.log(typeof null)//object
+    console.log(typeof NaN)//number
+    console.log(typeof new Function())//function
+    console.log(typeof new Array())//object
+    console.log(typeof new Date())//object
+    console.log(typeof new Object())//object
+
+console.log(''.constructor === String)//true
+    console.log(new Number(11).constructor === Number)//true
+    console.log(true.constructor === Boolean)//true
+    console.log(new Function().constructor === Function)//true
+    console.log(new Date().constructor === Date)//true
+    console.log(new Error().constructor === Error)//true
+    console.log([].constructor === Array)//true
+    console.log(arr.constructor === Array)//true
+
+解决样式问题 不行就在外面加div
+
+<template>
+    <div>
+        <p>0: 状态0</p>
+        <p>1: 状态1</p>
+        <p>2: 状态2</p>
+        <p>3: 状态3</p>
+        <input type="text" v-model='statusCode'>
+        <p>{{getStatus}}</p>
+        <p>{{statusCode | getStatusFileter}}</p>
+        <p>{{watchgetStatus}}</p>
+    </div>
+</template>
+<script>
+export default {
+    data() {
+        return {
+            statusCode: 1,
+            MethodsgetStatus: '',
+            watchgetStatus: ''
+        }
+    },
+    computed: {
+        getStatus() {
+            let test = '状态0'
+            switch (this.statusCode) {
+                case '0' : test = 'computed状态0' 
+                break;
+                case '1' : test = 'computed状态1' 
+                break;
+                case '2' : test = 'computed状态2' 
+                break;
+                case '3' : test = 'computed状态3' 
+                break;
+            }
+            return test
+        }
+    },
+    watch: {
+        // statusCode(newValue) {
+        //     switch (newValue) {
+        //         case '0' : this.watchgetStatus = 'watch状态0' 
+        //         break;
+        //         case '1' : this.watchgetStatus = 'watch状态1' 
+        //         break;
+        //         case '2' : this.watchgetStatus = 'watch状态2' 
+        //         break;
+        //         case '3' : this.watchgetStatus = 'watch状态3' 
+        //         break;
+        //     }
+        // }
+        statusCode: {
+            handler(newValue) {
+                switch (newValue) {
+                    case '0' : this.watchgetStatus = 'watch状态0' 
+                    break;
+                    case '1' : this.watchgetStatus = 'watch状态1' 
+                    break;
+                    case '2' : this.watchgetStatus = 'watch状态2' 
+                    break;
+                    case '3' : this.watchgetStatus = 'watch状态3' 
+                    break;
+                }
+            },
+            deep: true
+        }
+
+    },
+    methods: {
+        hangleGetStatus() {
+            let test = 'methods状态0'
+            switch (this.statusCode) {
+                case '0' : this.MethodsgetStatus = 'methods状态0' 
+                break;
+                case '1' : this.MethodsgetStatus = 'methods状态1' 
+                break;
+                case '2' : this.MethodsgetStatus = 'methods状态2' 
+                break;
+                case '3' : this.MethodsgetStatus = 'methods状态3' 
+                break;
+            }
+        }
+    },
+    filters: {
+        getStatusFileter(num) {
+            let test = '状态0'
+            switch (num) {
+                case '0' : test = 'filters状态0' 
+                break;
+                case '1' : test = 'filters状态1' 
+                break;
+                case '2' : test = 'filters状态2' 
+                break;
+                case '3' : test = 'filters状态3' 
+                break;
+            }
+            return test
+        }
+    }
+    
+}
+</script>
+<style>
+
+</style>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        #div2 {
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <button onclick='handleQuanping()'>quanping</button>
+    <button onclick='launchIntoFullscreen(div1)'>div1_quanping</button>
+    <button onclick='launchIntoFullscreen(div2)'>div2_quanping</button>
+    <div id='div1' onclick='handleDiv1()'>div1</div>
+    <div id='div2'>div2</div>
+    <button onclick='handleAlert()'>getStatus</button>
+</body>
+</html>
+<script>
+    document.addEventListener('click',function() {
+        console.log(isFullscreen())
+    })
+    const div1 = document.querySelector('#div1')
+    const div2 = document.querySelector('#div2')
+    function handleQuanping() {
+        var el = document.documentElement;
+        var rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullscreen;      
+        if(typeof rfs != "undefined" && rfs) {
+            rfs.call(el);
+        };
+        return;
+    }
+    function launchIntoFullscreen(element) { 
+        if(element.requestFullscreen){ 
+            element.requestFullscreen(); 
+        }
+        else if(element.mozRequestFullScreen) {
+            element.mozRequestFullScreen(); 
+        } 
+        else if(element.webkitRequestFullscreen) { 
+            element.webkitRequestFullscreen(); 
+        } 
+        else if(element.msRequestFullscreen) { 
+            element.msRequestFullscreen(); 
+        }
+    }
+    function exitFullscreen() {
+        if(document.exitFullscreen) {
+            document.exitFullscreen(); 
+        } else if(document.mozCancelFullScreen) {
+            document.mozCancelFullScreen(); 
+        } else if(document.webkitExitFullscreen) { 
+            document.webkitExitFullscreen(); 
+        } 
+    }
+    function isFullscreen(){
+        if(navigator.userAgent.indexOf("Firefox")!=-1) {
+            return document.mozFullScreen;
+        } else if(navigator.userAgent.indexOf("Chrome")!=-1) {
+            return document.webkitIsFullScreen;
+        }
+        return document.fullscreen;
+    }
+    function handleAlert() {
+        alert(isFullscreen())
+    }
+    function handleDiv1() {
+        console.log('woshi div1')
+    }
+    // var _a = 1
+    // var a = 9
+    // Object.defineProperty(window,'a',{
+    //     get() {
+    //         return this._a
+    //     },
+    //     set(newValue) {
+    //         this._a = newValue
+    //     }
+    // })
+    // console.log(a==1&&a==2&&a==3)
+    // a = 3
+    // a = 8
+    // a = 10
+    // console.log(a)
+    // Object.defineProperty(window,'a',{
+    //     get() {
+    //         return ++this._a
+    //     },
+    //     set(newv) {
+    //         this._a = newv
+    //     }
+    // })
+    // console.log(a==2&&a==3&&a==4)
+    // var a = [1,2,3]
+    // var a = [1,2,3];
+    // a.join = a.shift;
+    // console.log(a == 1 && a == 2 && a == 3);
+    // console.log(a)
+    // var aaa = 'wotama'
+    // var aaa = function() {
+    //     console.log('jjjjj')
+    // }
+    // var aaa = 'wotammmmmmmm'
+    // function aaa() {
+    //     console.log('woshiaaaaaaaaaa')
+    // }
+    // console.log(aaa)
+    // aaa()
+    // alert(aaa)
+    // var aaa = 'jjj'
+    // function aaa () {
+    //     console.log(888)
+    // }
+    // console.log(aaa)
+    
+</script>
+
+父组件要传的值
+<my-map
+                        @func='handleGetCity'
+                        :map_dataOptions='map_dataOptions'
+                        v-loading="map_isloading"
+                        element-loading-text="正在生成地图"
+                        element-loading-background="rgba(0, 0, 0, 0.8)"
+                    >
+                    </my-map>
+<my-zhuzhuangtu
+                        child="mychild_0"
+                        title="柱状图_0"
+                        chart="index_0"
+                        :zhu_dataOptions="map_zhu_dataOptions"
+                        style="height:300px;">
+                    </my-zhuzhuangtu>
+                    <p class='title'>{{shiTitle}}</p>
+                    <my-bingtu
+                        title="饼图_1"
+                        bingTuId="map_bing" 
+                        :bing_dataOptions="map_bing_dataOptions"
+                        style="height:450px;">
+                    </my-bingtu>
+<my-zhuzhuangtu
+                        child="mychild"
+                        title="柱状图"
+                        chart="index"
+                        :zhu_dataOptions="zhu_dataOptions"
+                        style="height:300px;">
+                    </my-zhuzhuangtu>
+ <my-bingtu
+                        title="饼图"
+                        bingTuId="bingTuId"
+                        :bing_dataOptions="bing_dataOptions"
+                        style="height:450px;">
+                    </my-bingtu>
+<script>
+data() {
+        return {
+            map_isloading: true,
+            mapToZhuAndBing_isloading: false,
+            zhutu_isloading: true,
+            isShowMap: true,
+            // 地图数据
+            map_dataOptions: {
+                title: {
+                    // text: '各市区工单量统计'
+                },
+                toolbox: {
+                    show: true,
+                    orient: 'vertical',
+                    left: 'right',
+                    top: 'center',
+                    feature: {
+                        dataView: {readOnly: false},
+                        restore: {},
+                        saveAsImage: {}
+                    }
+                },
+                visualMap: {
+                    min: 0,
+                    max: 10000,
+                    left: 'left',
+                    top: 'bottom',
+                    text: ['高', '低'], // 文本，默认为数值文本
+                    calculable: true,
+                    inRange: {// inRange (object)定义 在选中范围中 的视觉元素。（用户可以和 visualMap 组件交互，用鼠标或触摸选择范围）1、symbol: 图元的图形类别。2、symbolSize: 图元的大小。3、color: 图元的颜色。4、colorAlpha: 图元的颜色的透明度。5、opacity: 图元以及其附属物（如文字标签）的透明度。6、
+                        color: ['#E0FFFF', '#5AB1EF']
+                    },
+                },
+                series: [{
+                    type: 'map',//类型必须是map
+                    // map: 'henan',//注意这里的值需要和echarts.registerMap('henan',data);一致
+                    mapType:'河南',
+                    zoom: 1.2,
+                    roam: false, 
+                    itemStyle: {
+                        normal:{
+                            label: {
+                                show: true,
+                                formatter:'{b}\n{c}',
+                            },
+                            borderColor: 'rgba(0, 0, 0, 0.2)'
+                        },
+                        emphasis:{
+                            shadowOffsetX: 0,
+                            shadowOffsetY: 0,
+                            shadowBlur: 20,
+                            borderWidth: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    },
+                    showLegendSymbol: true,
+                    label: {
+                        normal: {
+                            borderColor: '#389BB7',
+                            show: true
+                        },
+                        emphasis: {
+                            areaColor: '#389BB7',
+                            show: true
+                        }
+                    },
+                    data:[]
+                }]
+            },
+            // 柱状图数据
+            zhu_dataOptions: {
+                title: {
+                    // text: this.title,
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                toolbox: {
+                    feature: {
+                        dataView: {show: true, readOnly: false},
+                        magicType: {show: true, type: ['line', 'bar']},
+                        restore: {show: true},
+                        saveAsImage: {show: true}
+                    }
+                },
+                legend: {
+                    data: []
+                    // data: ["呼入", "呼出"]
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                yAxis: {
+                    type: 'value',
+                    // type: 'log',
+                    boundaryGap: [0, 0]
+                },
+                xAxis: {
+                    type: 'category',
+                    axisLabel:{
+                        interval:0,
+                        // rotate:-90
+                        formatter: function (value) {
+                        //x轴的文字改为竖版显示
+                        var str = value.split("");
+                        return str.join("\n");
+                    }
+                    },
+                    data: []
+                    // data: ["万看看", "史凤仙", "张燕", "杨洁", "梁爽", "荆璐", "调度", "赵佳慧", "赵明娟", "马敏"],
+                },
+                series: []
+                // series: [
+                //     {name: "呼入", type: "bar", data: [119, 108, 30, 79, 100, 116, 3, 123, 88, 107]},
+                //     {name: "呼出", type: "bar", data: [14, 5, 6, 15, 4, 34, 0, 4, 6, 10]}
+                // ]
+            },
+            // 饼图数据
+            bing_series: [],
+            bing_dataOptions: {
+                title: {
+                    // x: 'center'
+                    // text:this.title
+                },
+                tooltip: {
+                    trigger: 'item',
+                    formatter: '{a} <br/>{b} : {c} ({d}%)'
+                },
+                toolbox: {
+                    feature: {
+                        dataView: {show: true, readOnly: false},
+                        restore: {show: true},
+                        saveAsImage: {show: true}
+                    }
+                },
+                legend: {
+                    // type: 'scroll',
+                    // orient: 'vertical',
+                    // right: 10,
+                    // top: 40,
+                    // bottom: 20,
+                    // data: this.legend,
+                    bottom: 10,
+                    left: 'center',
+                    data: []
+                    // selected: this.selected
+                },
+                series: [
+                    {
+                        name: '检查结果',
+                        type: 'pie',
+                        radius: '35%',
+                        center: ['50%', '45%'],
+                        // data: this.series,
+                        data: [],
+                        itemStyle: {
+                            normal: {
+                                label: {
+                                    show: true, //开启显示
+                                    position: 'top', //在上方显示
+                                    textStyle: { //数值样式
+                                        // color: 'black',
+                                        fontSize: 10
+                                    },
+                                    // formatter: '{b} : {c} ({d}%)' 
+                                    formatter: function(e){
+                                　　　　 var newStr=" ";
+                                        var start,end;
+                                　　　　 var name_len=e.name.length;    　　　　　　　　　　　　   //每个内容名称的长度
+                                　　　　 var max_name=4;    　　　　　　　　　　　　　　　　　　//每行最多显示的字数
+                                　　　　 var new_row = Math.ceil(name_len / max_name); 　　　　// 最多能显示几行，向上取整比如2.1就是3行
+                                　　　　 if(name_len > max_name){ 　　　　　　　　　　　　　　  //如果长度大于每行最多显示的字数
+                                　　　　　　for(var i=0;i<new_row;i++){ 　　　　　　　　　　　   //循环次数就是行数
+                                　　　　　　　　var old='';    　　　　　　　　　　　　　　　　    //每次截取的字符
+                                　　　　　　　　start=i*max_name;    　　　　　　　　　　     //截取的起点
+                                               if(i === 1) {
+                                                   end = start + 5; 
+                                               } else {
+                                                   end=start+max_name;    　　　　　　　　　  //截取的终点
+                                               }
+                                　　　　　　　　
+                                　　　　　　　　if(i==new_row-1){    　　　　　　　　　　　　   //最后一行就不换行了
+                                    　　　　　　　old=e.name.substring(start);
+                                　　　　　　　　}else{
+                                    　　　　　　　old=e.name.substring(start,end)+"\n";    
+                                　　　　　　　　}
+                                　　　　　　　　newStr += old; //拼接字符串
+                                　　　　　　  }
+                                　　　    } else {                                          //如果小于每行最多显示的字数就返回原来的字符串
+                                　　　　　　newStr=e.name; 
+                                　　　    }
+                                    　　　return `${newStr}\n(${e.value})${e.percent}%`;
+                                    　}  
+                                },
+                            },
+                            emphasis: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }
+                ]
+            },
+            // 地图跳到柱状图数据
+            map_zhu_dataOptions: {
+                title: {
+                    // text: this.title,
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                toolbox: {
+                    feature: {
+                        dataView: {show: true, readOnly: false},
+                        magicType: {show: true, type: ['line', 'bar']},
+                        restore: {show: true},
+                        saveAsImage: {show: true}
+                    }
+                },
+                legend: {
+                    data: []
+                    // data: ["呼入", "呼出"]
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                yAxis: {
+                    type: 'value',
+                    // type: 'log',
+                    boundaryGap: [0, 0]
+                },
+                xAxis: {
+                    type: 'category',
+                    axisLabel:{
+                        interval:0,
+                        // rotate:-90
+                        formatter: function (value) {
+                        //x轴的文字改为竖版显示
+                        var str = value.split("");
+                        return str.join("\n");
+                    }
+                    },
+                    data: []
+                    // data: ["万看看", "史凤仙", "张燕", "杨洁", "梁爽", "荆璐", "调度", "赵佳慧", "赵明娟", "马敏"],
+                },
+                series: []
+                // series: [
+                //     {name: "呼入", type: "bar", data: [119, 108, 30, 79, 100, 116, 3, 123, 88, 107]},
+                //     {name: "呼出", type: "bar", data: [14, 5, 6, 15, 4, 34, 0, 4, 6, 10]}
+                // ]
+            },
+            // 地图跳到饼图数据
+            map_bing_series: [],
+            map_bing_dataOptions: {
+                title: {
+                    // x: 'center'
+                    // text:this.title
+                },
+                tooltip: {
+                    trigger: 'item',
+                    formatter: '{a} <br/>{b} : {c} ({d}%)'
+                },
+                toolbox: {
+                    feature: {
+                        dataView: {show: true, readOnly: false},
+                        restore: {show: true},
+                        saveAsImage: {show: true}
+                    }
+                },
+                legend: {
+                    // type: 'scroll',
+                    // orient: 'vertical',
+                    // right: 10,
+                    // top: 40,
+                    // bottom: 20,
+                    // data: this.legend,
+                    bottom: 10,
+                    left: 'center',
+                    data: []
+                    // selected: this.selected
+                },
+                series: [
+                    {
+                        name: '检查结果',
+                        type: 'pie',
+                        radius: '35%',
+                        // clickable:false,　　　　　　 //是否开启点击
+                        // minAngle: 0,           　　 //最小的扇区角度（0 ~ 360），用于防止某个值过小导致扇区太小影响交互
+                        // avoidLabelOverlap: true,
+                        center: ['50%', '45%'],
+                        // data: this.series,
+                        data: [],
+                        itemStyle: {
+                            normal: {
+                                label: {
+                                    show: true, //开启显示
+                                    position: 'top', //在上方显示
+                                    textStyle: { //数值样式
+                                        // color: 'black',
+                                        fontSize: 10
+                                    },
+                                    // formatter: '{b} : {c} ({d}%)' 
+                                    formatter: function(e){
+                                　　　　 var newStr=" ";
+                                        var start,end;
+                                　　　　 var name_len=e.name.length;    　　　　　　　　　　　　   //每个内容名称的长度
+                                　　　　 var max_name=4;    　　　　　　　　　　　　　　　　　　//每行最多显示的字数
+                                　　　　 var new_row = Math.ceil(name_len / max_name); 　　　　// 最多能显示几行，向上取整比如2.1就是3行
+                                　　　　 if(name_len > max_name){ 　　　　　　　　　　　　　　  //如果长度大于每行最多显示的字数
+                                　　　　　　for(var i=0;i<new_row;i++){ 　　　　　　　　　　　   //循环次数就是行数
+                                　　　　　　　　var old='';    　　　　　　　　　　　　　　　　    //每次截取的字符
+                                　　　　　　　　start=i*max_name;    　　　　　　　　　　     //截取的起点
+                                               if(i === 1) {
+                                                   end = start + 5; 
+                                               } else {
+                                                   end=start+max_name;    　　　　　　　　　  //截取的终点
+                                               }
+                                　　　　　　　　
+                                　　　　　　　　if(i==new_row-1){    　　　　　　　　　　　　   //最后一行就不换行了
+                                    　　　　　　　old=e.name.substring(start);
+                                　　　　　　　　}else{
+                                    　　　　　　　old=e.name.substring(start,end)+"\n";    
+                                　　　　　　　　}
+                                　　　　　　　　newStr += old; //拼接字符串
+                                　　　　　　  }
+                                　　　    } else {                                          //如果小于每行最多显示的字数就返回原来的字符串
+                                　　　　　　newStr=e.name; 
+                                　　　    }
+                                    　　　return `${newStr}\n(${e.value})${e.percent}%`;
+                                    　}  
+                                },
+                            },
+                            emphasis: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }
+                ]
+            },
+            shiTitle: '我是标题',
+        }
+    },
+    methods: {
+        handleGetCity(city) {
+            this.mapToZhuAndBing_isloading = true;
+            this.isShowMap = false;
+            this.shiTitle = `${city}各县工单数据`
+            this.map_bing_series = []
+            this.getCityData(city)
+        },
+        initMap() {
+            this.axios.get(`${this.Global.serverSrc}customer_app/get_home_henan_gongdan`,{withCredentials:true}).then(res => {
+                // console.log(res)
+                const {data: {status,data: {henan,gongdan_pie_data}}} = res;
+                if(status) {
+                    this.initBingTu(gongdan_pie_data)
+                    this.map_isloading = false
+                    this.map_dataOptions.series[0].data = henan
+                }
+            })
+        },
+        initBingTu({names,values}) {
+            const bing_xAxisData = names
+            const bing_seriesData =  [
+                {
+                    "data": values,
+                    "name": "数量",
+                    "type": "bar"
+                }
+            ]
+            this.bing_dataOptions.legend.data = bing_xAxisData
+            // 处理数据
+            for (let i = 0; i < bing_xAxisData.length; i++) {
+                this.bing_series.push({
+                    'name': bing_xAxisData[i],
+                    'value': bing_seriesData[0]['data'][i]
+                });                        
+            }
+            this.bing_dataOptions.series[0].data = this.bing_series
+        },
+        initZhuzhuangtu() {
+            this.axios.get(`${this.Global.serverSrc}customer_app/get_home_huawu`,{withCredentials:true}).then(res => {
+                // console.log(res)
+                const {data: {status, data: {huawu: {names, in_data, out_data}}}} = res;
+                const zhu_legendData = ["呼入", "呼出"]
+                const zhu_xAxisData = names
+                const zhu_seriesData = [
+                    {"name": "呼入", "type": "bar", "data": in_data},
+                    {"name": "呼出", "type": "bar", "data": out_data}
+                ]
+                // console.log(data)
+                if(status) {
+                    this.zhutu_isloading = false
+                    this.zhu_dataOptions.legend.data = zhu_legendData
+                    this.zhu_dataOptions.xAxis.data = zhu_xAxisData
+                    this.zhu_dataOptions.series = zhu_seriesData
+                }
+            })
+
+        },
+        getCityData(city) {
+            this.axios.get(`${this.Global.serverSrc}customer_app/get_home_city_detail?city_name=${city}`,{withCredentials:true}).then(res => {
+                // console.log(res)
+                const {data: {status,data: {names, values}}} = res;
+                const map_legendData = ["数量"]
+                const map_xAxisData = names
+                const map_seriesData = [
+                    {
+                        data: values,
+                        name: "数量",
+                        type: "bar"
+                    }
+                ]
+                if(status) {
+                    this.mapToZhuAndBing_isloading = false
+                    // 柱状图
+                    this.map_zhu_dataOptions.legend.data = map_legendData
+                    this.map_zhu_dataOptions.xAxis.data = map_xAxisData
+                    this.map_zhu_dataOptions.series = map_seriesData
+                    // 饼图
+                    this.map_bing_dataOptions.legend.data = map_xAxisData
+                    // 处理数据
+                    for (let i = 0; i < map_xAxisData.length; i++) {
+                        this.map_bing_series.push({
+                            'name': map_xAxisData[i], 
+                            'value': map_seriesData[0]['data'][i]
+                        });                        
+                    }
+                    this.map_bing_dataOptions.series[0].data = this.map_bing_series
+                }
+            })
+        }
+    },
+</script>
+
+子组件 map
+<template>
+    <div>
+        <div id="map" style="height:600px;width:100%"></div>
+    </div>
+</template>
+<script>
+import echarts from 'echarts'
+import 'echarts/map/js/province/henan.js'
+export default {
+    data () {
+        return {
+            chart: '',
+            clickItem:'',
+        }
+    },
+    props: {
+        map_dataOptions: {
+            type: Object,
+            required: true
+        }
+    },
+    watch: {
+        map_dataOptions: {
+            handler(newValue , oldValue) {
+                this.chart.setOption(this.map_dataOptions)
+            },
+            deep: true
+        }
+    },
+    methods:{
+        resize () {
+            this.dom.resize();
+        },
+        drawPie(id){
+            this.chart = echarts.init(document.getElementById(id))
+            this.chart.setOption(this.map_dataOptions)
+            this.chart.on('click', params => {
+                this.clickItem = params.data.name;
+                // console.log(this.clickItem)
+                this.$emit('func',this.clickItem)
+            });
+        }
+    },
+    //调用
+    mounted(){
+        this.$nextTick(function() {
+            this.drawPie('map')
+        })
+    }
+}
+</script>
+<style lang='less' scoped>
+
+</style>
+
+柱图
+<template>
+    <div :id="chart" :ref="child"></div>
+</template>
+
+<script>
+import echarts from 'echarts'
+export default {
+    name: '',
+    data () {
+        return {
+            charts: '',
+            legend:[],
+            series:[],
+        }
+    },
+    props: {
+        title: {
+            type: String,
+            required: true
+        },
+        chart: {
+            type: String,
+            required: true
+        },
+        child: {
+            type: String,
+            required: true
+        },
+        zhu_dataOptions: {
+            type: Object,
+            required: true
+        }
+    },
+    watch: {
+        zhu_dataOptions: {
+            handler(newVal, oldVal) {
+            ????this.charts.setOption(this.zhu_dataOptions);
+        ???},
+        ???deep: true //对象内部属性的监听，关键。
+        }
+    },
+    methods:{
+        resize () {
+            this.dom.resize()
+        },
+        drawPie(id){
+            this.charts = echarts.init(document.getElementById(id));
+            this.charts.setOption(this.zhu_dataOptions)
+        }
+    },
+    mounted(){
+        this.$nextTick(function() {
+            this.drawPie(this.chart)
+        })
+    },
+}
+</script>
+父组件写好一个整体的数据对象，
+发请求重新给数据赋值
+一下传给子组件
+子组件watch一下这个数据对象，重新set就可以显示了
