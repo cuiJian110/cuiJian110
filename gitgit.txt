@@ -7,3 +7,15 @@ git push origin dev
 git checkout master
 git branch -d dev
 git checkout -b dev origin/dev
+或者直接
+git push --set-upstream origin dev
+推送到远端
+
+
+…or create a new repository on the command line
+echo "# reactNote" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/cuiJian110/reactNote.git
+git push -u origin master
