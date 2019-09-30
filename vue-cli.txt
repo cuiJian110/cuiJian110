@@ -1,0 +1,16 @@
+°²×°node 8.11
+node -v
+npm -v
+npm i cnpm i -g
+cnpm i yarn -g
+cnpm -v
+cnpm i vue-cli -g
+vue -v
+vue init webpach projectname
+cnpm i
+npm run dev
+
+cnpm i create-react-app -g
+create-react-app projectname
+yarn start
+

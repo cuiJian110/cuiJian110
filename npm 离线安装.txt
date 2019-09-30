@@ -1,0 +1,6 @@
+首先设置镜像
+npm config set registry http://registry.npm.taobao.org
+（速度快很多）
+下载包用
+npm install --global-style
+就可以复制到内网机器运行了
