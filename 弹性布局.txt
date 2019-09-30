@@ -1,0 +1,15 @@
+父容器 有6大属性
+1.flex-wrap: wrap(项目的宽度>父容器的宽度就换行), nowrap(不换行 默认的)
+2.flex-direction: column(竖向排布)， 
+3./* justify-content: flex-start; */
+  /* justify-content: flex-end; */
+  /* justify-content: center; */
+  /* justify-content: space-around; */
+  /* justify-content: space-between; */
+4./* align-items: flex-start; */
+  /* align-items: flex-end; */
+  /* align-items: center; */
+  /* align-items: stretch; */
+子项目 有6大属性
+flex : 项目的宽度的比
+align-self: 各自的侧轴的对其方式（覆盖父容器的align-items）
