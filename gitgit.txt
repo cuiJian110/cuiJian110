@@ -19,3 +19,14 @@ git add README.md
 git commit -m "first commit"
 git remote add origin https://github.com/cuiJian110/reactNote.git
 git push -u origin master
+
+正在做一个功能突然又有一个新需求时候
+正在分支1上开发
+git status
+git add .
+git commit -m '描述'
+git checkout dev
+
+git pull
+git checkout -b fenzhi2
+

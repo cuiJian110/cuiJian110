@@ -1,0 +1,43 @@
+Vue中监听窗口关闭事件，并在窗口关闭前发送请求
+网上很多博客说监听窗口关闭事件使用window.beforeunload,但是这个监听事件也会在页面刷新的时候执行，经过百度和自己的实际测试，终于解决了这个问题，代码如下：
+mounted() {
+      
+window.addEventListener('beforeunload', e => this.beforeunloadHandler(e))
+      
+window.addEventListener('unload', e => this.unloadHandler(e))
+    
+},
+    
+destroyed() {
+      
+window.removeEventListener('beforeunload', e => this.beforeunloadHandler(e))
+      
+window.removeEventListener('unload', e => this.unloadHandler(e))
+    
+},
+    
+methods: {
+      
+beforeunloadHandler(){
+        this._beforeUnload_time=new Date().getTime();
+      },
+      
+unloadHandler(e){
+        this._gap_time=new Date().getTime()-this._beforeUnload_time;
+        debugger
+        //判断是窗口关闭还是刷新
+        if(this._gap_time<=5){
+          //如果是登录状态，关闭窗口前，移除用户
+          if(!this.showLoginButton){
+            $.ajax({
+              url: '/pictureweb/user/remove',
+              type: 'get',
+              async:false, //或false,是否异步
+             
+            })
+          }
+        }
+     
+},
+
+}
