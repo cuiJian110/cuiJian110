@@ -1,0 +1,24 @@
+转字符串
+function elseToString(prop) {
+        let str = ''
+        if(prop === null) {
+            str = 'null'
+        } else if(prop === undefined) {
+            str = 'undefined'
+        } else if(prop.constructor === Array || prop.constructor === Object) {
+            str = JSON.stringify(prop)
+        } else {
+            str = String(prop)
+        }
+        return str
+    }
+let arr = [
+        {name: 'a', age: 2, sex: 'mana'},
+        {name: 'e', age: 5, sex: 'mans'},
+        {name: 'c', age: 3, sex: 'mand'},
+        {name: 'b', age: 9, sex: 'manf'},
+        {name: 'd', age: 4, sex: 'manc'},
+    ]
+sort根据字符串比较
+    arr.sort((a, b) => elseToString(b.age).localeCompare(elseToString(a.age)))
+    console.log(arr)
