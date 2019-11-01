@@ -1,0 +1,39 @@
+第一次进入页面执行
+created
+mounted
+activated
+再次进入的时候created mounted不执行
+只执行activated这个
+
+
+第一次进入页面这样执行
+page1 created
+page1_1 created
+page1_1 mounted
+page1 mounted
+page1_1 activated
+page1 activated
+
+page2 created
+page2_1 created
+page2_1 mounted
+page2 mounted
+page2_1 activated
+page2 activated
+
+page4 created
+page4_1 created
+page4_1 mounted
+page4 mounted
+page4_1 activated
+page4 activated
+
+再次进入页面这样执行
+page1_1 activated
+page1 activated
+
+page2_1 activated
+page2 activated
+
+page4_1 activated
+page4 activated
