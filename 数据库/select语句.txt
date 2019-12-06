@@ -1,0 +1,22 @@
+https://www.cnblogs.com/vanl/p/5472812.html
+
+select student.sid,student.sname,student.gender,class.caption from student left JOIN class on student.class_id=class.cid
+
+select * from student where sid>5
+select s.sid,s.sname,s.gender from student s
+select s.sid,s.sname,s.gender,c.caption from student s left join class c on s.class_id=c.cid where s.sid>3
+select s.sid,s.sname,s.gender,c.caption,tc.tname from student s left join class c on s.class_id=c.cid 
+left join teacher tc on c.banzhuren_id=tc.tid
+
+select fs.sid,xs.sname,cl.cname,fs.num as 分数 
+from score fs left join student xs on fs.student_id=xs.sid
+left join course cl on fs.course_id=cl.cid ORDER BY 分数
+
+
+select fs.sid,xs.sname,bj.caption,cl.cname,ls.tname as 任课老师,lss.tname as 班主任,fs.num as 分数 from score fs 
+left join student xs on fs.student_id=xs.sid
+left join class bj on xs.class_id=bj.cid
+left join teacher lss on bj.banzhuren_id=lss.tid
+left join course cl on fs.course_id=cl.cid
+left join teacher ls on cl.teacher_id=ls.tid
+ORDER BY 分数

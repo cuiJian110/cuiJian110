@@ -1,0 +1,5 @@
+import { getRsa, login } from '../api';
+async RSA() {
+    const data = await getRsa();
+    this.publicKey = data;
+},
