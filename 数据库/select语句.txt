@@ -20,3 +20,19 @@ left join teacher lss on bj.banzhuren_id=lss.tid
 left join course cl on fs.course_id=cl.cid
 left join teacher ls on cl.teacher_id=ls.tid
 ORDER BY 分数
+
+索引从0开始，
+select * from ts_dict_entry order by id desc limit 0,10
+等同于
+select * from ts_dict_entry order by id desc limit 10
+从10开始，取11条
+select * from ts_dict_entry order by id desc limit 9,11
+
+select s.id,s.name,s.yw as 语文,s.sx,c.c_name as "班级",t.t_name from student s
+left join class c on s.bj_id=c.c_id
+left JOIN teacher t on c.bzr_id=t.t_id
+
+select s.id,s.name,s.yw as 语文,s.sx,c.c_name as "班级",t.t_name from student s
+left join class c on s.bj_id=c.c_id
+left JOIN teacher t on c.bzr_id=t.t_id
+order by s.sx desc LIMIT 10 
