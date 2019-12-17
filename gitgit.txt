@@ -49,4 +49,19 @@ git add .
 git commit -m 'commit fenzhi1'
 git push
 
+拉取gitlab项目
+git clone 项目地址
+此时一般在master分支上
+git checkout -b dev
+此时在本地Dev分支与远程Dev没有关连
+
+-----
+git pull origin dev
+git push --set-upstream origin dev
+-----
+这样本地Dev与远程Dev就有联系了
+
+拉取远程分支到当前分支
+git pull origin 远程分支名字
+
 

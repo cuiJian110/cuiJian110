@@ -1,0 +1,13 @@
+// 这样写的话 前端请求地址为
+// http://localhost:3000/getList?pageSize=5&currentPage=91
+r.get("/getList",(req,res) => {
+    const {pageSize, currentPage} = req.query;
+    res.send(`第${currentPage}页，每页有${pageSize}条`)
+})
+// 这样写的话 前端请求地址为
+// http://localhost:3000/getList/90
+// 两个都可以的
+r.get("/getList/:id",(req,res) => {
+    const id = req.params.id;
+    res.send(id+"hhh")
+})
