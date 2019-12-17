@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="handleTest(1)">1</button>
+    <button onclick="handleTest(2)">2</button>
+    <button onclick="handleTest(3)">3</button>
+    <button onclick="handleTest(4)">4</button>
+    <button onclick="handleTest(5)">5</button>
+    <button onclick="handleTest(6)">6</button>
+    <button onclick="handleTest(7)">7</button>
+</body>
+</html>
+<script>
+    /*
+        sort() 返回排序后的数组    改变原数组
+        push() 返回push后的长度   改变原数组
+        splice(i,n) i是索引n个数 返回截取的数组   改变原数组
+        slice() 切去索引值start到索引值end的数组，不包含end索引的值，返回值是切出来的数组  不改变原数组
+
+        查找数组是否含有某个值：
+        indexOf() 返回第一个索引 NaN就算数组里有也是返回-1
+        includes() 返回boolean值，NaN也可以判断
+    */
+
+    // const arr1 = [1,2,3,456,66,5,88,9090];
+    // console.log(arr1);                      // [1, 2, 3, 456, 66, 5, 88, 9090]
+    // console.log(arr1.sort((a,b) => a-b));   // [1, 2, 3, 5, 66, 88, 456, 9090]
+    // console.log(arr1);                      // [1, 2, 3, 5, 66, 88, 456, 9090]
+    // const arr2 = [1,2,3,4];
+    // console.log(arr2.push(5)); //5
+    // console.log(arr2); // [1, 2, 3, 4, 5]
+    // const arr3 = [1,2,3,4,5,6,7,8,9,10,11,12,13];
+    // let pageSize = 3;
+    // console.log(arr3.splice(3,));
+    // console.log(arr3);
+    // function changePage(page) {
+    //   let list = [];
+    //   // 如果没有进行搜索tmpData是原始全部数据,如果进行了搜索tmpData为搜索或的数据
+    //   list = nCopy(this.tmpData);
+    //   this.pageCurrent = page;
+    //   this.tableData = list.splice((page - 1) * this.pageSize, this.pageSize);
+    // }
+    // const arr4 = [1,2,3,4,5,6,7,8,9,10,11,12,13];
+    // console.log(arr4.slice(1,200));
+    // console.log(arr4);
+    // function handleTest(currentPage) {
+    //     const start = (currentPage - 1) * pageSize;
+    //     const end = start + pageSize;
+    //     const arrn = arr3.slice(start, end);
+        
+    //     if(arrn.length === 0 ) {
+    //         console.log("没有数据了");
+    //     } else {
+    //         console.log(arrn);
+    //     }
+    // }
+    // const arr5 = [1,2,3,"aa",NaN,"jj"];
+    // console.log(arr5.indexOf(NaN));
+    // console.log(arr5.includes(NaN1));
+    /*
+        假设蜡烛高 h 粗每分钟燃烧h/120 细蜡烛每分钟燃烧h/60
+        假设停电x分钟 h-x(h/120) = 2(h-x(h/60))
+        1-x/120 = 2 - x/30
+        x = 40;
+    */
+</script>

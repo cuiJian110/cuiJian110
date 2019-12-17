@@ -1,0 +1,23 @@
+try {
+                            sourceData.forEach(item => {
+                                if(data.findIndex(i => item.ip === i.ip) !== -1 && item.hasOwnProperty("zabbix")) {
+                                    item.zabbix.push(data[data.findIndex(i => item.ip === i.ip)]);
+                                }
+                            })
+                        } catch (error) {
+                            
+                        }
+
+如果item下没有zabbix属性，就会出错forEach不会往下执行但是会执行下面的内容
+所以加上一个&&item.hasOwnProperty("zabbix")
+
+const arr5 = [1,2,3,"aa",NaN,"jj"];
+    console.log(arr5.indexOf(NaN));
+    try{
+        console.log(arr5.includes(NaN1));  //这句报错
+        console.log('999')                 //这句不执行
+    } catch(e) {
+
+    }
+try 代码块中一旦出错就会跳出 try ，不管是循环啥的都跳出，
+所以只把有可能出错的放到try catch里，不要放太多

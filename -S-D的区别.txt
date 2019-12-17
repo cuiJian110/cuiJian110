@@ -1,0 +1,12 @@
+npm install xxx -S，也就是 npm install module_name --save 写入dependencies
+
+npm install xxx -D，也就是 npm install module_name --save-dev 写入devDependencies
+
+devDependencies ，是我们开发的时候需要用到的一些包，
+只需要用于开发阶段，真正打包上线的时候并不需要这些包，
+因为这些工具只是你用来打包代码的，是用来识别特定文件以及代码，
+帮助我们生产最终文件的
+
+dependencies，这个则是需要发布到生产环境中的，
+就比如你要跑一个基于vue的项目，所以需要vue.js来支持，
+而这个vue.js文件就需要跟随项目到最终的生产环境
