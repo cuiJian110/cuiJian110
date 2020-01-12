@@ -1,0 +1,2 @@
+vue实例绑定的元素内部的template标签不支持v-show指令，即v-show="false"对template标签来说不起作用。
+但是此时的template标签支持v-if、v-else-if、v-else、v-for这些指令。
