@@ -1,0 +1,9 @@
+.input {
+    border: 1px dashed blue;
+}
+.input:focus {
+    outline-color: red;
+    border: none;
+}
+聚焦时候 红色
+失去焦点 蓝色
