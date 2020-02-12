@@ -64,4 +64,10 @@ git push --set-upstream origin dev
 拉取远程分支到当前分支
 git pull origin 远程分支名字
 
+如果远程分支：fenzhi1
+现在本地git checkout fenzhi1
+这个本地分支1会和远程分支1联系
+代码就是远程分支1的代码
+可以直接合并到Dev或者master上 
+
 
