@@ -6,3 +6,26 @@
 /deep/.ivu-dropdown-rel {
     height: 47px;
 }
+
+/deep/.ivu-page .ivu-page-item-active {
+    border-color: #00C292;
+    a {
+        color: #00C292;
+    }
+}
+/deep/.ivu-page .ivu-page-item:hover {
+    border-color: #00C292;
+    a {
+        color: #00C292;
+    }
+}
+/deep/.ivu-page .ivu-page-prev:hover {
+    a {
+        color: #00C292;
+    }
+}
+/deep/.ivu-page .ivu-page-next:hover {
+    a {
+        color: #00C292;
+    }
+}

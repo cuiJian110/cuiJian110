@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+其他功能02
+=======
+功能2测试
+>>>>>>> gongneng_02
 在本地创建远程分支并关联起来
 
 第一个develop是远程分支 最后一个是本地分支
@@ -63,5 +68,11 @@ git push --set-upstream origin dev
 
 拉取远程分支到当前分支
 git pull origin 远程分支名字
+
+如果远程分支：fenzhi1
+现在本地git checkout fenzhi1
+这个本地分支1会和远程分支1联系
+代码就是远程分支1的代码
+可以直接合并到Dev或者master上 
 
 
