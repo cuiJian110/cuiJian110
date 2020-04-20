@@ -1,0 +1,7 @@
+<DatePicker 
+                    v-model="commentInfo.createTime" 
+                    @on-change="commentInfo.createTime=$event"
+                    type="datetime" 
+                    placeholder="请选择评价时间" 
+                    style="width: 100%">
+                </DatePicker>
