@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    html,body {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,.2);
+    }
+    .box{
+        width:250px;
+        height:300px;
+        background: skyblue;
+        position: absolute;
+        left:50%;
+        top:50%;
+        margin-left: -125px;
+        margin-top: -150px;
+        
+    }
+    .title {
+        height: 50px;
+        padding-left: 20px;
+        line-height: 50px;
+        background-color: #ccc;
+        cursor: move;
+    }
+</style>
+<body>
+    <div class="box">
+        <div class="title">biaoti</div>
+    </div>
+</body>
+</html>
+<script>
+    const box = document.querySelector(".box");
+    const title = document.querySelector(".title");
+    
+    title.addEventListener("mousedown",function(e) {
+        console.log(e)
+        // 获取鼠标在box里的位置
+        let x = e.pageX - box.offsetLeft;
+        let y = e.pageY - box.offsetTop;
+        document.addEventListener("mousemove",move)
+        function move (e) {
+            let left = e.pageX - x;
+            let top = e.pageY - y;
+            box.style.left = left + 125 + "px";
+            box.style.top = top + 150 + "px";
+        }
+        title.addEventListener("mouseup",function(e) {
+            document.removeEventListener("mousemove",move)
+        })
+    })
+    // title.addEventListener("mouseup",function(e) {
+    //     document.removeEventListener("mousemove",move)
+    // })
+</script>
+<!-- <script>
+    var obox = document.querySelector(".box");
+    var clientW = document.documentElement.clientWidth;
+    var clientH = document.documentElement.clientHeight;
+    var w = obox.offsetWidth;
+    var h = obox.offsetHeight;
+    // 行为过程：按下之后，移动，再抬起
+    obox.addEventListener("mousedown",function(eve){
+        // 获取按下的坐标，在按下的事件对象身上
+        var e1 = eve || window.event;
+        // 为了防止移动过快，鼠标在某一瞬间离开元素，移动事件加给页面
+        document.addEventListener("mousemove",move)
+        // 因为移动事件在抬起的时候，被删除，所以提前起名
+        function move(eve){
+            var e = eve || window.event;
+            // 计算元素要移动的真正的距离：为鼠标相对于页面的坐标减去按下时相对于元素的坐标
+            var l = e.pageX - e1.offsetX;
+            var t = e.pageY - e1.offsetY;
+            // 边界限定
+            if(t < 0){
+                t = 0
+            }
+            if(l < 0){
+                l = 0
+            }
+            if(l > clientW - w){
+                l = clientW - w;
+            }
+            if(t > clientH - h){
+                t = clientH - h;
+            }
+
+            // 设置位置
+            obox.style.left = l + "px"
+            obox.style.top = t + "px"
+        }
+        // 抬起时，删除移动，删除抬起
+        document.addEventListener("mouseup",up)
+        function up(){
+            document.removeEventListener("mousemove",move)
+            document.removeEventListener("mouseup",up)
+        }
+    })
+
+</script> -->
