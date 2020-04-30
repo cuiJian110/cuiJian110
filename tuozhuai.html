@@ -47,6 +47,10 @@
     title.addEventListener("mousedown",function(e) {
         console.log(e)
         // 获取鼠标在box里的位置
+        // pageX 鼠标在页面的x坐标
+        // pageY 鼠标在页面的y坐标
+        // offsetLeft 相对于上级最近有定位的元素的左边距
+        // offsetTop 相对于上级最近有定位的元素的上边距
         let x = e.pageX - box.offsetLeft;
         let y = e.pageY - box.offsetTop;
         document.addEventListener("mousemove",move)
