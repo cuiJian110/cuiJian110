@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let arr = [4,5];
+    [1,2,3].push.apply(arr,[6,7])
+    console.log(arr)
+    function Boss() {
+        this.list = []
+    }
+    Boss.prototype.listen = function(jobSeeker,func) {
+        if(!this.list[jobSeeker]) {
+            this.list[jobSeeker] = []
+        }
+        this.list[jobSeeker].push(func)
+    }
+    Boss.prototype.publish = function() {
+        let jobSeeker = Array.prototype.shift.apply(arguments);
+        let func = this.list[jobSeeker];
+        if(!func || func.length === 0) return console.log("没有"+jobSeeker);
+        for(let i = 0 , fun; fun = this.list[jobSeeker][i]; i++) {
+            fun.apply(this,arguments)
+        }
+    }
+    let boss1 = new Boss();
+    boss1.listen("小王",function(msg) {
+        console.log("小王职业是"+msg)
+    })
+    boss1.listen("小王",function(msg) {
+        console.log("小王职业是"+msg+"666")
+    })
+    boss1.listen("小张",function(msg) {
+        console.log("小张de职业是"+msg)
+    })
+    boss1.publish("小李","jingli")
+    boss1.publish("小王","Java")
+    boss1.publish("小王","Java 组脏")
+    boss1.publish("小张","python")
+</script>
+<!-- <script>
+    const wether = {
+        list: [],
+        listen: function(func) {
+            this.list.push(func);
+        },
+        publish: function() {
+            for(let i = 0, func; func=this.list[i]; i++) {
+                func.apply(null,arguments)
+            }
+        }
+    }
+    wether.listen(function(wether,wind) {
+        console.log("wether:"+wether+"wind:"+wind)
+    })
+    wether.listen(function() {
+        console.log("wether:+")
+    })
+    // wether.publish("晴天", "三级")
+</script> -->
+<!-- <script>
+    const Boss = {} //楼盘销售负责人
+    Boss.clientList = []; // 存放订阅者的回调
+    Boss.listen = function (fn) { // 增加订阅者
+        this.clientList.push(fn); // 将买房人的号码缓存起来
+    }
+    Boss.trigger = function () { // 发布消息
+        for (var i = 0, fn; fn = this.clientList[i++];) {
+            fn.apply(this, arguments)
+        }
+    }
+    /****************第一种比较简单的*******************/ 
+    // Boss.listen(function (msg) {
+    //     console.log(msg) // 开始销售了
+    // })
+
+    // Boss.trigger('开始销售了') // 发布消息
+    /****************第一种比较简单的*******************/ 
+    /****************第二种比较复杂的*******************/ 
+    // 订阅时给其加一个key做为标识，就相当于key就是订阅者的身份
+    Boss.listen = function (key, fn) {
+        if (!this.clientList[key]) {
+            // 如果没有此类订阅，就给该类订阅增加一个缓存列表 
+            this.clientList[key] = []
+        }
+        this.clientList[key].push(fn);
+        console.log(this.clientList)
+    }
+
+    Boss.trigger = function () { // 发布消息
+        const key = Array.prototype.shift.call(arguments),
+            // 取出消息类型
+        fns = this.clientList[key]
+        if (!fns || !fns.length) return // 如果该类消息没有订阅直接返回
+        for ( var i = 0, fn; fn = fns[i++]; ) {
+            fn.apply(this, arguments)
+        }
+    }
+
+    Boss.listen('老王', function (msg) {
+        console.log('老王订阅户型' + msg)
+    })
+    Boss.listen('老李', function (msg) {
+        console.log('老李订阅户型' + msg)
+    })
+    // Boss.trigger('老王', '143平米');
+    // Boss.trigger('老李', '888平米');
+    /****************第二种比较复杂的*******************/ 
+</script> -->
