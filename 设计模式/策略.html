@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    const username = {value: "sdf"};
+    const age = {value: 120};
+    const password = {value: "123123"};
+    const strategies = {
+        isEmpty: function(value, msg) {
+            if(!value) {
+                return msg
+            }
+        },
+        isDayu: function(value, zhi, msg) {
+            if(value < zhi) {
+                return msg
+            }
+        },
+        isDaLength: function(value, length, msg) {
+            if(value.length <= length) {
+                return msg
+            }
+        }
+    }
+    function Verity() {
+        this.list = []
+    }
+    Verity.prototype.add = function(obj,rules,msg) {
+        const args = rules.split(":");
+        const strategy = args.shift();
+        this.list.push(function() {
+            args.push(msg);
+            args.unshift(obj.value)
+            return strategies[strategy].apply(null,args)
+        })
+    }
+    Verity.prototype.start = function() {
+        for(let i = 0, func; func=this.list[i]; i++) {
+            let msg = func()
+            if(msg) {
+                return msg
+            }
+        }
+    }
+    let verity = new Verity();
+    verity.add(username,"isEmpty", "username 不能为空");
+    verity.add(age,"isDayu: 18", "age > 18");
+    verity.add(password,"isDaLength: 6", "password > 6");
+    let msg = verity.start();
+    if(msg) {
+        alert(msg)
+    }
+</script>
+<!-- <script>
+    // function getBonus(level,salary) {
+    //     if(level === "a") {
+    //         return salary * 5;
+    //     } else if(level === "b") {
+    //         return salary * 3;
+    //     } else if(level === "c") {
+    //         return salary * 2;
+    //     }
+    //     return 0;
+    // }
+    // console.log(getBonus("a",100))
+    // console.log(getBonus("b",80))
+    // console.log(getBonus("b",100))
+    // console.log(getBonus("c",20))
+    // const strategies = {
+    //     a: function(salary) {
+    //         return salary * 5;
+    //     },
+    //     b: function(salary) {
+    //         return salary * 3;
+    //     },
+    //     c: function(salary) {
+    //         return salary * 2;
+    //     }
+    // }
+    // function getStrategyBonus(level,salary) {
+    //     let strategy = level;
+    //     return strategies[strategy](salary)
+    // }
+    // console.log(getStrategyBonus("a",200))
+    // console.log(getStrategyBonus("b",50))
+    // console.log(getStrategyBonus("b",100))
+    // console.log(getStrategyBonus("c",20))
+</script> -->

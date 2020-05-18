@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">btn</button>
+</body>
+</html>
+<!-- <script>
+    let a = function() {
+        console.log("员工能")
+    }
+    let _a = a;
+    a = function() {
+        _a();
+        console.log("xinzengde")
+    } 
+    a()
+</script> -->
+<script>
+    Function.prototype._before = function(fn) {
+        let self = this;
+        return function() {
+            // console.log("this",this)
+            // console.log("arguments",arguments)
+            fn.apply(this,arguments)
+            return self.apply(this,arguments)
+        }
+    }
+    Function.prototype._after = function(fn) {
+        console.log("进来了 _after")
+        let self = this;
+        return function() {
+            self.apply(null,arguments);
+            fn()
+        }
+    }
+    function test(msg) {
+        console.log(msg)
+        return msg
+    }
+    let ss = test._before(function() {
+        console.log("before")
+    })(1,2,3)
+    console.log("ss",ss)
+    function handleShow() {
+        console.log("yao da kai la111")
+    }
+    function sure() {
+        console.log("are you sure222")
+    }
+    // document.querySelector("#btn").onclick = handleShow._before(sure);
+    document.querySelector("#btn").addEventListener("click",handleShow._before(sure))
+    // test._after(function() {
+    //     console.log("after")
+    // })(666)
+    // 在之前执行
+// Function.prototype.before = function (fn) {
+//   let self = this
+//   return function () {
+//     fn.apply(this, arguments)
+//     return self.apply(this, arguments)
+//   }
+// }
+// // 在之后执行
+// Function.prototype.after = function (fn) {
+//   let self = this
+//   return function () {
+//     let res = self.apply(this, arguments)
+//     fn.apply(this, arguments)
+//     return res
+//   }
+// }
+// function foo(params) {
+//   console.log(params, 1)
+//   return 22
+// }
+// 钩子可以共享参数和返回值
+// console.log(foo.before((params) => {
+//   console.log(params, 2)
+// }).after((params) => {
+//   console.log(params, 3)
+// })({ a: 1 }))
+</script>

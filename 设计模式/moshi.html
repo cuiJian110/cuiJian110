@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">btn</button>
+</body>
+</html>
+<script>
+    let openDoor = {
+        execute: function() {
+            console.log("开men")
+            setTimeout(() => {
+                console.log("开men 1")
+            },500)
+        }
+    }
+
+    let openKonttiao = {
+        execute: function() {
+            console.log("开kongtian")
+            setTimeout(() => {
+                console.log("开kongtian 2")
+            },400)
+        }
+    }
+    let openTv = {
+        execute: function() {
+            console.log("开tv")
+            setTimeout(() => {
+                console.log("开tv 3")
+            },300)
+        }
+    }
+
+    let chooseTv = {
+        execute: function() {
+            console.log("choose tv")
+            setTimeout(() => {
+                console.log("choose tv 4")
+            },200)
+        }
+    }
+    let watchTv = {
+        execute: function() {
+            console.log("watch tv")
+            setTimeout(() => {
+                console.log("watch tv 5")
+            },100)
+        }
+    }
+    let closeTv = {
+        execute: function() {
+            console.log("close tv")
+            setTimeout(() => {
+                console.log("close tv 6")
+            },0)
+        }
+    }
+    function SetCommand() {
+        this.list = [];
+    }
+    SetCommand.prototype.add = function(obj) {
+        this.list.push(obj)
+    }
+    SetCommand.prototype.execute = function() {
+        for(let i = 0; i < this.list.length; i++) {
+            this.list[i].execute()
+        }
+    }
+    let command = new SetCommand();
+    let command1 = new SetCommand();
+    command1.add(openKonttiao)
+    command1.add(openTv)
+    let command2 = new SetCommand();
+    command2.add(chooseTv)
+    command2.add(watchTv)
+    command2.add(closeTv)
+    command.add(openDoor)
+    command.add(command1)
+    command.add(command2)
+
+    document.getElementById("btn").onclick = function() {
+        command.execute();
+    }
+</script>

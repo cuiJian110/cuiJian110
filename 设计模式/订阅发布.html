@@ -10,9 +10,39 @@
 </body>
 </html>
 <script>
-    let arr = [4,5];
-    [1,2,3].push.apply(arr,[6,7])
-    console.log(arr)
+    function test() {
+        const first = Array.prototype.shift.apply(arguments);
+        console.log(first,arguments)
+    }
+    test(1,2,3,4)
+</script>
+<!-- <script>
+
+    function Boss() {
+        this.list = {}
+    }
+    Boss.prototype.on = function(type,callback) {
+        if(!this.list[type]) {
+            this.list[type] = []
+        }
+        this.list[type].push(callback);
+    }
+    Boss.prototype.emit = function(type, payload) {
+        if(!this.list[type] || this.list[type].length === 0) return alert("没有"+type)
+        for(let i = 0, func; func = this.list[type][i]; i++) {
+            func(payload)
+        }
+    }
+    let boss = new Boss();
+    boss.on("aaa",function(msg) {
+        console.log(msg,1)
+    })
+    boss.on("aaa",function(msg) {
+        console.log(msg,2)
+    })
+    boss.emit("aaa",{name: "zd"})
+</script> -->
+<!-- <script>
     function Boss() {
         this.list = []
     }
@@ -44,7 +74,7 @@
     boss1.publish("小王","Java")
     boss1.publish("小王","Java 组脏")
     boss1.publish("小张","python")
-</script>
+</script> -->
 <!-- <script>
     const wether = {
         list: [],
