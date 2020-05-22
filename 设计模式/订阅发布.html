@@ -14,7 +14,43 @@
         const first = Array.prototype.shift.apply(arguments);
         console.log(first,arguments)
     }
-    test(1,2,3,4)
+    // test(1,2,3,4)
+    let obj = {}
+    // console.log(obj.aaa)
+</script>
+<script>
+    const Win = function() {
+        this.list = {}
+    }
+    Win.prototype.$on = function(type, fun) {
+        if(!this.list[type]) {
+            this.list[type] = [];
+        }
+        this.list[type].push(fun)
+    }
+    Win.prototype.$emit = function(type,payload) {
+        if(!this.list[type]) return alert("没有订阅"+type+"事件");
+        for(let i = 0; i < this.list[type].length; i++) {
+            let func = this.list[type][i];
+            func.call(this,payload);
+        }
+    }
+    Win.prototype.$remove = function(type) {
+        if(!this.list[type]) return alert("没有订阅"+type+"事件");
+        delete this.list[type];
+        alert("已经取消"+type+"事件");
+    }
+    const win = new Win();
+    win.$on("click",function(msg) {
+        console.log("click",msg)
+    })
+    win.$on("mouseover",function(msg) {
+        console.log(msg,"mouseover")
+    })
+    win.$emit("click",{name: "zs"})
+    win.$emit('mouseover',{age: 90})
+    win.$remove("click")
+    win.$emit("click",12)
 </script>
 <!-- <script>
 
