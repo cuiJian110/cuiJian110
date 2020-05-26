@@ -10,9 +10,17 @@
 </body>
 </html>
 <script>
-    let p = new Promise((res, rej) => {
-        setTimeout(() => {
-            console.log("执行完成Promise")
+    function aaa(timeout,msg) {
+        return new Promise((res,rej) => {
+            setTimeout(() => {
+                console.log(msg)
+                res()
+            }, timeout);
         })
+    }
+    aaa(1000,"111").then(res => {
+        return aaa(2000,"222")
+    }).then(res => {
+        return aaa(3000,"333")
     })
 </script>
