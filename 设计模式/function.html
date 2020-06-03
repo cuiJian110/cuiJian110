@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="https://www.jianshu.com/p/c64bfbcd34c3">浅谈自执行函数（立即调用的函数表达式）</a>
+</body>
+
+</html>
+<script>
+    // https://www.jianshu.com/p/c64bfbcd34c3
+    // var obj = {
+    //     name: "aaa",
+    //     age: 90
+    // }
+    // let a = "a";
+    // let b = "b";
+    // 自执行函数1
+    // ;(function(window, fun) {
+    //     const aa = "aa"
+    //     const bb = "bb"
+    //     window.aa = aa;
+    //     window.bb = bb;
+    //     fun()
+    //     // console.log(e)
+    // }(this,function() {
+    //     console.log("test")
+    // }));
+    // 自执行函数2
+    // (function(globe, fun) {
+    //     const aa = "aa"
+    //     const bb = "bb"
+    //     globe.aa = aa;
+    //     globe.bb = bb;
+    //     fun()
+    // })(this,function() {
+    //     console.log("jjj")
+    // })
+    // console.log(aa)
+    // console.log(bb)
+    // function fun3(){
+    //     console.log("fun33");
+    // }(1);
+    // true && function () { 
+    //     console.log("true &&") 
+    // }(); // "true &&"
+    // false || function () { console.log("true ||") }(); // "true ||"
+    // 此处要注意： &&, || 的短路效应。即： false && (表达式1)  是不会触发表达式1；
+    // 同理，true || (表达式2) 不会触发表达式2
+    // 先看一个简单示例，实现 add(1)(2)(4)() = 10 的效果：
+    // const cost_ = function() {
+    //     let arr = [];
+    //     return function() {
+    //         if(arguments.length === 0) {
+    //             let sum = 0;
+    //             for(let i = 0; i < arr.length; i++) {
+    //                 sum += arr[i];
+    //             }
+    //             return sum;
+    //         } else {
+    //             Array.prototype.push.apply(arr,arguments);
+    //             return arguments.callee;
+    //         }
+    //     }
+    // }
+    // let cost = cost_();
+    // console.log(cost(10)(50,10))
+    // console.log(cost(20))
+    // console.log(cost(30)(40))
+    // console.log(cost())
+    const currying = function(func) {
+        let arr = [];
+        return function() {
+            if(arguments.length === 0) {
+                return func.apply(null,arr);
+            } else {
+                Array.prototype.push.apply(arr,arguments);
+                return arguments.callee;
+            }
+        }
+    }
+    const cost = currying(function() {
+        let sum = 0;
+        for(let i = 0; i < arguments.length; i++) {
+            sum += arguments[i];
+        }
+        return sum;
+    })
+    console.log(cost(10)(50,10))
+    console.log(cost(20))
+    console.log(cost(30)(40))
+    console.log(cost())
+</script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let obj = {
+        arr1: "1",
+        arr2: "2",
+        arr3: "3"
+    }
+    let keys = Object.keys(obj);
+    const iterator = function(arr) {
+        let currtent = 0;
+        let length = function() {
+            return arr.length
+        }
+        let next = function() {
+            currtent++;
+        }
+        let hasNext = function() {
+            return currtent < length()
+        }
+        let getCurrent = function() {
+            return arr[currtent];
+        }
+        return { length, next, hasNext, getCurrent }
+    }
+    const objarr = iterator(keys);
+    function getStr () {
+        let arr = [];
+        function join() {
+            if(objarr.hasNext()) {
+                arr.push(`${objarr.getCurrent()}=${obj[objarr.getCurrent()]}`)
+                objarr.next()
+                join()
+            }
+        } 
+        join()
+        return arr.join("&&&")
+    }
+    console.log(getStr(objarr))
+</script>

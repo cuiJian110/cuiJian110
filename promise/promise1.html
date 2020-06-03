@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // var p = new Promise(function(res,rej) {
+    //     foo.bar();
+    //     res(42);
+    // })
+    // p.then(
+    //     function fulfilled(){
+    //     // 永远不会跑到这里 :(
+    //     },
+    //     function rejected(err){
+    //         // `err`将是一个来自`foo.bar()`那一行的`TypeError`异常对象
+    //         console.log(err)
+    //     }
+    // )
+    // p.then(res => {
+        // foo.bar();
+    //     console.log(res)
+    // },err => {
+    //     console.log(err)
+    // })
+
+    let obj = {
+        arr1: "1",
+        arr2: "2",
+        arr3: "3"
+    }
+    let keys = Object.keys(obj);
+    let arr = []
+    keys.forEach((item,index) => {
+        arr.push(`${item}=${obj[item]}`)
+    })
+    // console.log(arr.join("&"))
+    let strr = "abcd";
+    // console.log(strr.substring(0,3))
+    let obj = {
+        arr1: "1",
+        arr2: "2",
+        arr3: "3"
+    }
+    let keys = Object.keys(obj);
+    const iterator = function(arr) {
+        let currtent = 0;
+        let length = function() {
+            return arr.length
+        }
+        let next = function() {
+            currtent++;
+        }
+        let hasNext = function() {
+            return currtent < length()
+        }
+        let getCurrent = function() {
+            return arr[currtent];
+        }
+        return {
+            length,
+            next,
+            hasNext,
+            getCurrent
+        }
+    }
+    const objarr = iterator(keys);
+    // while(objarr.hasNext()) {
+    //     console.log(objarr.getCurrent())
+    //     objarr.next()
+    // }
+    function getStr () {
+        let arr = [];
+        function join() {
+            if(objarr.hasNext()) {
+                arr.push(`${objarr.getCurrent()}=${obj[objarr.getCurrent()]}`)
+                objarr.next()
+                join()
+            }
+        } 
+        join()
+        return arr.join("||")
+    }
+    console.log(getStr(objarr))
+</script>

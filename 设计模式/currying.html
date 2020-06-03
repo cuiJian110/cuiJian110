@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // const cost = (function() {
+    //     let money = 0;
+    //     return function() {
+    //         for(let i = 0; i < arguments.length; i++) {
+    //             money += arguments[i];
+    //         }
+    //         return money;
+    //     }
+    // })()
+    const cost = function() {
+        let money = 0;
+        // return function() {
+            for(let i = 0; i < arguments.length; i++) {
+                money += arguments[i];
+            }
+            return money;
+        // }
+    }
+    const currying = function(fn) {
+        let arr = [];
+        return function() {
+            if(arguments.length === 0) {
+                return fn.apply(this,arr)
+            } else {
+                Array.prototype.push.apply(arr, arguments)
+                return arguments.callee;
+            }
+        }
+    }
+    const jisuan = currying(cost);
+    jisuan(10)
+    jisuan(10)
+    console.log(jisuan(10)(20)())
+    console.log(jisuan())
+    console.log(jisuan())
+</script>
