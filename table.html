@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* table 公共样式 */
+table,tr,td,th{
+    box-sizing: border-box;
+}
+table{
+   width:100%;
+    border-collapse: collapse;
+    font-size: .14rem;
+}
+th {
+    line-height: .4rem;
+    text-align: center;
+    padding-left: .1rem;
+    padding-right: .1rem;
+}
+
+thead>tr {
+    background: #f5f8fa;
+}
+
+th.duohang {
+    /* padding-top: .1rem; */
+    line-height: .2rem;
+}
+
+td {
+    line-height: .5rem;
+    text-align: center;
+}
+
+td.duohang {
+    padding-top: .1rem;
+    line-height: .2rem;
+    text-align: left;
+    text-indent: 2em;
+}
+
+tbody>tr {
+    border: .01rem solid #eee;
+}
+
+tbody>tr:hover {
+    background: #f5f8fa;
+
+}
+</style>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>age</th>
+                <th>sex</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>zhangsan</td>
+                <td>11</td>
+                <td>nan</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
