@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+// 实现一个栈，并实现下面方法
+// push(element)：添加一个新元素到栈顶。
+// pop()：移除栈顶的元素，同时返回被移除的元素。
+// peek()：返回栈顶的元素，不对栈做任何修改 (这个方法不会移除栈顶的元素，仅仅返回它)。
+// isEmpty()：如果栈没有任何元素就返回 true，否则返回 false。
+// clear()：移除栈里面的所有元素。
+// size()：返回栈里的元素个数。这个方法与数组的 length 属性类似。
+// function Stack() {
+//     this.list = []
+// }
+// Stack.prototype.push = function(item) {
+//     this.list.push(item);
+// }
+// Stack.prototype.pop = function() {
+//     // let last = this.list[this.size()-1];
+//     return this.list.pop();
+// }
+// Stack.prototype.peek = function() {
+//     return this.list[this.size()-1];
+// }
+// Stack.prototype.isEmpty = function() {
+//     return this.size() === 0;
+// }
+// Stack.prototype.clear = function() {
+//     this.list = [];
+// }
+// Stack.prototype.size = function() {
+//     return this.list.length;
+// }
+
+class Stack {
+    constructor() {
+        this.list = [];
+    }
+    push(item) {
+        this.list.push(item)
+    }
+    pop() {
+        return this.list.pop()
+    }
+    peek() {
+        return this.list[this.size()-1]
+    }
+    isEmpty() {
+        return this.size() === 0;
+    }
+    clear() {
+        this.list = [];
+    }
+    size() {
+        return this.list.length;
+    }
+
+}
+// let str1 = ( -> false
+// let str2 = () -> true
+// let str3 = (() -> false
+// let str4 = ()) -> false
+// let str5 = ()) -> false
+// let str6 = (((()()))()) -> true
+// let str7 = ((())))(  -> false
+
+let str1 = "("
+let str2 = "()" 
+let str3 = "(()" 
+let str4 = "())"
+let str5 = "())" 
+let str6 = "(((()()))())" 
+let str7 = "((())))("  
+function checkkuohao(str) {
+    let arr = [];
+    let arrStr = str.split("");
+    for(let i = 0; i < arrStr.length; i++) {
+        if(arrStr[i] === "(") {
+            arr.push("(")
+        } else {
+            if(arr.pop() === undefined) {
+                return false;
+            }
+        }
+    }
+    return arr.length === 0
+}
+// function checkkuohao(str) {
+//     if(!str || str.length === 0 || str[0] === ")") return false;
+//     let stack = new Stack();
+//     str.split("").forEach(char => {
+//         let status = stack.peek()==='('&&char===')'
+//         status ? stack.pop(): stack.push(char)
+//     });
+//     return stack.isEmpty()
+        
+// }
+console.log(checkkuohao(str1))
+console.log(checkkuohao(str2))
+console.log(checkkuohao(str3))
+console.log(checkkuohao(str4))
+console.log(checkkuohao(str5))
+console.log(checkkuohao(str6))
+console.log(checkkuohao(str7))
+// const sn = new Stack();
+// sn.push(1);
+// sn.push(3);
+// sn.push(5);
+// sn.push(7);
+// sn.push(8);
+// sn.push(9);
+// console.log(sn.pop())
+// console.log(sn.peek())
+// console.log(sn.pop())
+// console.log(sn.pop())
+// console.log(sn.pop())
+// console.log(sn.pop())
+// console.log(sn.pop())
+// console.log(sn.pop())
+// console.log(sn.size())
+// console.log(sn.isEmpty())
+// console.log(sn.list)
+</script>

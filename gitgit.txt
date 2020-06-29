@@ -75,4 +75,9 @@ git pull origin 远程分支名字
 代码就是远程分支1的代码
 可以直接合并到Dev或者master上 
 
+远程删除dist文件夹
+本地删除dist文件夹
+gitignore文件中添加dist
+提交就可以忽略dist文件夹
+
 

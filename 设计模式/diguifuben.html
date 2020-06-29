@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let arr = [
+        {id: 6, pid: 2},
+        {id: 2, pid: 1},
+        {id: 3, pid: 1},
+        {id: 4, pid: 1},
+        {id: 5, pid: 1},
+        {id: 1},
+    ]
+    function toTree(arr) {
+        arr.forEach(item => {
+            delete item.children;
+        })
+        let map = {};
+        arr.forEach(item => {
+            map[item.id] = item;
+        })
+        let arrn = [];
+        arr.forEach(item => {
+            let parent = map[item.pid];
+            if(parent) {
+                if(parent.children) {
+                    parent.children.push(item)
+                } else {
+                    parent.children = []
+                    parent.children.push(item)
+                }
+            } else {
+                arrn.push(item)
+            }
+        })
+        return arrn;
+    }
+    console.log(toTree(arr))
+</script>

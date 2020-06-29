@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function getSum() {
+        let sum = 0;
+        for(let i = 0; i < arguments.length; i++) {
+            sum += arguments[i]
+        }
+        return sum;
+    };
+    let jia = (function() {
+        let obj = {};
+        return function() {
+            let key = Array.prototype.slice.call(arguments,0).join(",");
+            if(obj[key]) {
+                console.log("有计算过啦")
+                return obj[key];
+            }else {
+                console.log("没有计算过")
+                obj[key] = getSum.apply(null,arguments);
+                return obj[key]
+            }
+        }
+    })()
+    console.log(jia(2,3));
+    console.log(jia(12,3));
+    console.log(jia(2,3));
+    console.log(jia(2,3,4));
+    console.log(jia(2,3,4));
+    console.log(jia(2,3,4));
+    console.log(jia(2,32));
+    console.log(jia(2,31));
+</script>

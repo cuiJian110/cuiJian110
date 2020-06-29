@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let getSum = function(arr) {
+        let sum = 0;
+        for(let i = 0; i < arguments.length; i++) {
+            sum += arguments[i];
+        }
+        return sum;
+    }
+    let currying = function(fun) {
+        let arr = [];
+        return function() {
+            if(arguments.length === 0) {
+                return fun.apply(this,arr)
+            } else {
+                Array.prototype.push.apply(arr,arguments);
+                return arguments.callee;
+            }
+        }
+    }
+    let cost = currying(getSum);
+    console.log(cost(10))
+    console.log(cost(20))
+    console.log(cost(30))
+    console.log(cost(40)(100))
+    console.log(cost(12)(100,200))
+    console.log(cost())
+</script>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // 135.实现 add 函数,让 add(a)(b)和 add(a,b)两种调用结果相同
+    let add = function(a,b) {
+        if(!b) {
+            return function(x) {
+                return a+x
+            }
+        }else {
+            return a+b
+        }
+    }
+    // console.log(add(1,2)(1))
+    // console.log(add(1)(2))
+
+    // 162.模拟实现一个 localStorage
+    const MyLocalStorage = function() {
+        this.localObj = {};
+    }
+    MyLocalStorage.prototype.setItem = function(key,value) {
+        this.localObj[key] = value;
+    }
+    MyLocalStorage.prototype.getItem = function(key) {
+        return this.localObj[key];
+    }
+    MyLocalStorage.prototype.removeItem = function(key) {
+        delete this.localObj[key]
+    }
+    let ml = new MyLocalStorage();
+    ml.setItem("name","zs")
+    ml.setItem("age",10)
+    ml.setItem("sex","nan")
+    ml.setItem("dog",{name: "erha"})
+    // console.log(ml.getItem("age"))
+    ml.removeItem("dog")
+    // console.log(ml.localObj)
+    class localStorageMock {
+        constructor() {
+            console.log("localStorageMock")
+            this.store = {};
+        };
+        getItem(key) {
+        return this.store[key] || null;
+        };
+        setItem(key, value) {
+        this.store[key] = value.toString();
+        };
+        removeItem(key) {
+        delete this.store[key];
+        };
+        clear() {
+        this.store = {};
+        };
+  };
+  window.localStorage2 = new localStorageMock();
+
+  localStorage2.setItem('a', 1);
+  localStorage2.getItem('a');
+//   console.log(localStorage2.getItem('a'));
+    var a = 10;
+    (function () {
+        // console.log(a)
+        a = 5
+        // console.log(window.a)
+        var a = 20;
+        // console.log(a)
+    })()
+    // var a = 10;
+    // (function () {
+    //     var a;
+    //     console.log(a)
+    //     a = 5
+    //     console.log(window.a)
+    //     a = 20;
+    //     console.log(a)
+    // })()
+    var b = 10;
+(function b(){
+    b = 20;
+    console.log(b); 
+})();
+</script>
