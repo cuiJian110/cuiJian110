@@ -1,0 +1,12 @@
+1、百度搜索“禁止右键代bai码”（以下du代码可直接复zhi制）：
+
+<body oncontextmenu="return false" onselectstart="return false" 
+ondragstart="return false" onbeforecopy="return false" oncopy=document.selection.empty() onselect=document.selection.empty()>
+
+方法四：
+将<body>改成
+<body ondragstart="window.event.returnValue=false" 
+oncontextmenu="window.event.returnValue=false" onselectstart="event.returnValue=false">
+该方法使鼠标失效，效果和方法三差不多，但此时不能用鼠标选取页面上的内容，同时“编辑->全选”也没有作用。
+
+主要是oncontextmenu="window.event.returnValue=false"

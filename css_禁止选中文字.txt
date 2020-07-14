@@ -1,0 +1,38 @@
+<style>
+    .noselect {
+
+-webkit-touch-callout: none; /* iOS Safari */
+
+-webkit-user-select: none; /* Chrome/Safari/Opera */
+
+-khtml-user-select: none; /* Konqueror */
+
+-moz-user-select: none; /* Firefox */
+
+-ms-user-select: none; /* Internet Explorer/Edge */
+
+user-select: none; /* Non-prefixed version, currently
+
+not supported by any browser */
+
+}
+</style>
+<body class="noselect" οncοntextmenu=self.event.returnValue=false oncopy="return false;" oncut="return false;">
+    <h1 id="title">1.html</h1>
+    <div class="m_body">
+        <button>btn1</button>
+        <button onclick="handle2()">btn2</button>
+    </div>
+    <div class="aaa">
+        111.html22222222222222 <br>
+        333333333333
+        <p>6666666666666666</p>
+        <p>0000000000000000</p>
+    </div>
+</body>
+</html>
+<script>
+    // function handle2() {
+    //     document.querySelector(".aaa").innerHTML = "aaabbb"
+    // }
+</script>

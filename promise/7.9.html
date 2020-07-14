@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // function getList(flag) {
+        // return new Promise((resolve,reject) => {
+            // setTimeout(() => {
+                // if(flag) {
+                //     return Promise.resolve({code: 200, list: [{id: 1}]})
+                // } else {
+                //     return Promise.reject({code: 500, err: "err message"})
+                // }
+            // },1000)
+        // })
+    // }
+    // getList(true).then(res => {
+    //     console.log(res)
+    // })
+    // let proList = [];
+    // for(let i = 0; i < 3; i++) {
+        // proList.push(new Promise((res,rej) => {
+        //     setTimeout(() => {
+        //         res({code: 200, msg: "第一个"})
+        //     },1000)
+        // }))
+    // }
+        // proList.push(new Promise((res,rej) => {
+        //     setTimeout(() => {
+        //         res({code: 200, msg: "第2个"})
+        //     },1500)
+        // }))
+        // proList.push(new Promise((res,rej) => {
+        //     setTimeout(() => {
+        //         res({code: 200, msg: "第3个"})
+        //     },3000)
+        // }))
+        // Promise.all(proList).then(res => {
+        //     console.log(res)
+        // })
+        console.log('begin');
+        setTimeout(()=>{
+            console.log('setTimeout 1')
+            Promise.resolve().then(()=>{
+                console.log('promise 1');
+                setTimeout(()=>{
+                    console.log('setTimeout2 and promise1&2');
+                })
+            }).then(()=>{
+                console.log('promise 2')
+            }).then(()=>{
+                console.log('promise 3 ')
+            })
+        },0)
+        console.log("end");
+        // begin end setTimeout 1 promise 1 promise 2  promise 3  setTimeout2 and promise1&2
+</script>

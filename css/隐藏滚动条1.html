@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .content {
+        width: 300px;
+        height: 200px;
+        border: 1px solid red;
+        overflow-y: scroll;
+        margin: 0 auto;
+    }
+    .content::-webkit-scrollbar {
+        display: none;
+    }
+    /* Firefox浏览器
+    对于Firefox，我们可以将滚动条宽度设置为none：
+    scrollbar-width: none; Firefox */
+    /* IE浏览器
+    对于IE，我们需要使用-ms-prefix属性定义滚动条样式：
+    -ms-overflow-style: none;  IE 10+  */
+    /* Chrome和Safari浏览器
+    对于Chrome和Safari浏览器，我们必须使用CSS滚动条选择器，然后使用display：none隐藏它：
+    ::-webkit-scrollbar {
+    display: none;  Chrome Safari 
+    } */
+</style>
+<body>
+    <div class="content">
+        <p>菜单1</p>
+        <p>菜单1</p>
+        <p>菜单1</p>
+        <p>菜单1</p>
+        <p>菜单1</p>
+        <p>菜单1</p>
+        <p>菜单1</p>
+        <p>菜单1</p>
+        <p>菜单1</p>
+    </div>
+</body>
+</html>
