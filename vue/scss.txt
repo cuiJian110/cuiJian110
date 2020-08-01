@@ -1,0 +1,44 @@
+在VUE项目中使用SCSS
+这篇文章是记录的在VUE项目中SCSS的使用
+
+vue项目上安装SCSS和开发入门
+
+ 
+
+① 使用vue-cli模板创建新项目：vue init webpack myvue
+
+② 安装sass 依赖包 ，在cmd界面输入：
+
+npm  install sass-loader --save-dev
+npm install node-sass --sava-dev
+
+③ 在build文件夹下的webpack.base.conf.js的rules里面添加配置
+
+
+{
+test: /\.scss$/,
+loaders: ['style', 'css', 'sass']
+}
+④ 使用scss时候在所在的style样式标签上添加lang=”scss”即可应用对应的语法，否则报错
+
+⑤ scss使用测试：如下测试修改字体颜色
+
+<style lang="scss">
+$color:red;
+div {color:$color;}
+</style>
+我这样做完以后，运行一下，报错
+
+
+Modele build failed: TypeError: this.getResolve is not a function at Object.loader...
+
+这是因为当前sass的版本太高，webpack编译时出现了错误，这个时候只需要换成低版本的就行，下面说一下修改方法，很简单，如下，
+
+找到package.json文件，里面的 "sass-loader"的版本更换掉 就行了。
+
+我本地是将 "sass-loader": "^8.0.0"，更换成了 "sass-loader": "^7.3.1",
+
+执行命令，重新安装项目依赖：
+
+npm install
+然后重新  npm run dev 就完美的解决啦！

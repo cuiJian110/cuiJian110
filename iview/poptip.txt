@@ -1,0 +1,8 @@
+<Poptip
+                        v-if="item.sourceType==0"
+                        confirm
+                        transfer
+                        :title="'确定删除'+item.title+'么'"
+                        @on-ok="handleDelete(item)">
+                        <span  class="asrouter">删除</span>
+                    </Poptip>

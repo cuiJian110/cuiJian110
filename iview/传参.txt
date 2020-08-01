@@ -1,0 +1,14 @@
+<Page 
+                        :total="item.totalPage"
+                        :current="item.currentPage"
+                        :page-size="item.pageSize"
+                        @on-change="pageChange_($event,item)"
+                        prev-text="上一页" next-text="下一页"
+                      />
+// 分页操作评论2级
+    pageChange_(currentPage,item) {
+      // console.log(currentPage,item)
+      this.id = item.id;
+      this.reqdataParamsObj_2.page = currentPage;
+      this.getCommentList_();
+    },
