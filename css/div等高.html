@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>display:table实现浮动效果</title>
+</head>
+<body>
+
+<style type="text/css" rel="stylesheet">
+    * { margin:0; padding:0; }
+#wrap {
+/* (这行代码是重点，否则你会看到页面很长很长) */
+overflow:hidden;
+padding:0;
+padding-left:180px;/*（内补丁）*/
+}
+#left,#right {
+height:auto;
+margin-bottom:-10000px;/*（外补丁）*/
+padding-bottom:10000px;/*（内补丁）*/
+}
+#left {
+display:inline;
+float:left;
+width:180px;
+margin-left:-180px;/*（外补丁）*/
+background: #0CF;
+}
+#right{
+    float:right;
+    width:100%;
+    background: #FC6;
+}
+</style>
+<div id="wrap">
+    <div id="left">
+        11111<br>
+        111<br>
+        11111<br>
+        1111111<br>
+        2222<br>
+        2222<br>
+        2222<br>
+    </div>
+    <div id="right">
+        2222<br>
+        2222<br>
+    </div>
+    <div id="left">
+        2222<br>
+        2222<br>
+    </div>
+    <div id="right">
+        2222<br>
+        2222<br>
+    </div>
+</div>
+</body>
+</html>
