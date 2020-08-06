@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    html {
+        font-size: 100px;
+    }
+    .box {
+        width: 1228px;
+        margin: 0 auto;
+    }
+    /* table 公共样式 */
+table{
+    width:100%;
+    border-collapse: collapse;
+    font-size: .14rem;
+}
+th {
+    line-height: .4rem;
+    text-align: center;
+    padding-left: .1rem;
+    padding-right: .1rem;
+}
+thead>tr {
+    background: #f5f8fa;
+}
+th.duohang {
+    /* padding-top: .1rem; */
+    line-height: .2rem;
+}
+td {
+    line-height: .5rem;
+    text-align: center;
+}
+td.duohang {
+    padding-top: .1rem;
+    line-height: .2rem;
+    text-align: left;
+    text-indent: 2em;
+}
+tbody>tr {
+    border: .01rem solid #eee;
+}
+tbody>tr:hover {
+    background: #f5f8fa;
+
+}
+</style>
+
+<body>
+    <div class="box">
+        <table>
+            <thead>
+                <tr>
+                    <th  class="tl">训练营名称</th>
+                    <th >开营时间</th>
+                    <th >训练营状态</th>
+                    <th >学员</th>
+                    <th >训练营作业</th>
+                    <th >编辑子任务</th>
+                    <th >编辑子任务</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tl">{{ele}}</td>
+                    <td>2012.12.12 12:12:12-2012.12.12 12:12:12</td>
+                    <td>campStateName</td>
+                    <td><span class="asrouter" @click="gostudentslist(ele)">5人</span></td>
+                    <td><span @click="gotasklist(ele)" class="asrouter">查看详情</span></td>
+                    <td><span @click="gochildtask(ele)" class="asrouter">编辑</span></td>
+                    <td><span @click="gochildtask(ele)" class="asrouter">编辑</span></td>
+                </tr>
+                <tr>
+                    <td class="tl">{{ele}}</td>
+                    <td>2012.12.12 12:12:12-2012.12.12 12:12:12</td>
+                    <td>campStateName</td>
+                    <td><span class="asrouter" @click="gostudentslist(ele)">5人</span></td>
+                    <td><span @click="gotasklist(ele)" class="asrouter">查看详情</span></td>
+                    <td><span @click="gochildtask(ele)" class="asrouter">编辑</span></td>
+                    <td><span @click="gochildtask(ele)" class="asrouter">编辑</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
