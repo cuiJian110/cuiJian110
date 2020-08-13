@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .tips {
+		font-size: 12px;
+		font-weight: 600;
+		color: #3A3D44;
+		height: 45px;
+		line-height: 45px;
+		position: relative;
+		text-align: center;
+	}
+	.tips:before {
+		content: "";
+		position: absolute;
+		width: 28px;
+		height: 2px;
+		top: 50%;
+		background-color: #212121;
+		left: 110%;
+	}
+	.tips:after {
+		content: "";
+		position: absolute;
+		width: 28px;
+		height: 2px;
+		top: 50%;
+		background-color: #212121;
+		right: 110%;
+	}
+    .myfooter {
+        text-align: center;
+    }
+</style>
+<body>
+    <view class="content-title">了解详情</view>
+    <div class="box">
+        <div class="myfooter">
+            <!-- <div class="tips">了解详情</div> -->
+            <span class="tips">了解详情</span>
+        </div>
+    </div>
+</body>
+</html>

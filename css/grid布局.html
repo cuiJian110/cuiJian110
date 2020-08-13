@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+/* 120*3+50  410 */
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .content {
+        display: grid;
+        grid-template-columns: 120px 120px 120px;
+        grid-template-rows: 100px 100px 100px;
+        width: 410px;
+        background-color: #ccc;
+    }
+    .aa {
+        margin-right: 25px;
+        background-color: skyblue;
+    }
+    .aa:nth-child(3n) {
+        margin-right: 0;
+    }
+</style>
+<body>
+    <div class="content">
+        <div class="aa">1</div>
+        <div class="aa">2</div>
+        <div class="aa">3</div>
+        <div class="aa">4</div>
+        <div class="aa">5</div>
+        <div class="aa">6</div>
+        <div class="aa">7</div>
+        <div class="aa">8</div>
+        <div class="aa">9</div>
+        <div class="aa">10</div>
+    </div>
+</body>
+</html>

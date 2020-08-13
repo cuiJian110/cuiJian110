@@ -1,0 +1,2 @@
+input value设置为null
+this.$refs.upLoadFile.value = null;

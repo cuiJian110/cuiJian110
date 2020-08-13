@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CSS伪类实现中间文字两边横线效果</title>
+    <style>
+        .wrap {
+            position: absolute;
+            text-align: center;
+            width: 100%;
+        }
+        .wrap div {
+            line-height: 20px;
+        }
+        /*CSS伪类用法*/
+        .wrap div:after, .wrap div:before {
+            position: absolute;
+            top: 50%;
+            background: #ddd;
+            content: "";
+            height: 1px;
+            width: 45%;
+        }
+        /*调整背景横线的左右距离*/
+        .wrap div:before {
+            left: 0;
+        }
+        .wrap div:after {
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div>暂无数据</div>
+</div>
+</body>
+</html>

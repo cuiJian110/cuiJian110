@@ -1,0 +1,42 @@
+
+rules model 必须
+<Form ref="formValidate" :rules="ruleCreateCloud" :model="createReq"  :label-width="120">
+          <FormItem label="企业云名称：" prop="cloudName">
+              <Input v-model="createReq.cloudName" placeholder="请输入企业云名称"></Input>
+          </FormItem>
+          <div style="height: 20px"></div>
+          <FormItem label="企业云code：" prop="code">
+              <Input v-model="createReq.code" placeholder="请输入企业云code"></Input>
+          </FormItem>
+          <div style="height: 20px"></div>
+          <FormItem label="企业logo：" >
+            <div class="imglogo" v-show="logoimg">
+              <img id="logoimg" :src="createReq.logoStr" alt="" @click="handleUploadLogo">
+            </div>
+            <div class="uploadlogo" v-show="!logoimg">
+              <Button type="primary" @click="handleUploadLogo">上传图片</Button>
+              <input type="file" id="uploadimg" hidden @change="handleChangelogoimg">
+            </div>
+          </FormItem>
+          <div style="height: 20px"></div>
+          <FormItem label="企业描述：" prop="remark">
+              <Input v-model="createReq.remark" placeholder="请输入企业描述"></Input>
+          </FormItem>
+        </Form>
+createReq: {
+        cloudName: "",
+        code: "",
+        logoStr: "",
+        remark: "",
+      },
+      ruleCreateCloud: {
+        cloudName: [
+            { required: true, message: '企业云名称不能为空', trigger: 'blur' }
+        ],
+        code: [
+            { required: true, message: '企业云code不能为空', trigger: 'blur' }
+        ],
+        remark: [
+            { required: true, message: '企业描述不能为空', trigger: 'blur' }
+        ],
+      },

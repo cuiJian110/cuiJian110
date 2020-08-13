@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .fa {
+        width: 500px;
+        height: 500px;
+        border: 1px solid #ccc;
+    }
+    .son {
+        width: 200px;
+        height: 200px;
+        background-color: #999;
+        
+    }
+    .myinput {
+        outline: none;
+        border: none;
+        height: 50px;
+        font-size: 18px;
+        padding-right: 20px;
+    }
+    /* 
+    position: absolute; 
+    position: fixed; 
+    float: left; 
+    float: right; 
+    父级设置display： flex
+    都可以设置宽高
+    
+    */
+    /* 
+    position: relative; 
+    position: static; 
+    这两个不能设置宽高
+    */
+    /* 
+    input 行内块
+    img 行内元素
+     */
+</style>
+<body>
+    <div class="fa">
+        <!-- <span class="son">aa</span> -->
+        <input type="text" class="myinput">asda <br>
+        <img src="" alt="meinv" class="son">img
+    </div>
+</body>
+</html>

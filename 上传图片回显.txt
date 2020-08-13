@@ -1,0 +1,39 @@
+
+
+<FormItem label="logo：" >
+            <div class="imglogo" v-show="logoimg">
+              <img id="logoimg" src="" alt="" @click="handleUploadLogo">
+            </div>
+            <div class="uploadlogo" v-show="!logoimg">
+              <Button type="primary" @click="handleUploadLogo">上传图片</Button>
+              <input type="file" id="uploadimg" hidden @change="handleChangelogoimg">
+            </div>
+          </FormItem>
+data() {
+    return {
+      logoimg: false,
+    }
+  },
+// 上传logo
+    handleUploadLogo() {
+      document.getElementById("uploadimg").click();
+    },
+    // 真正的上传操作
+    handleChangelogoimg(e) {
+        const file = e.target.files[0];
+        const fileType = file.type;
+        let reg = /image/;
+        if (!reg.test(fileType)) {
+            this.$Message.error('文件格式不在允许范围内,请重新选择');
+        } else {
+          this.logoimg = true;
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          // 阅读文件完成后触发的事件
+          reader.onload = function () {
+              // 读取的URL结果：this.result
+              // $("#avatar_img").attr("src", this.result);//avatar_img  img标签的ID
+              document.getElementById("logoimg").src = this.result;
+          }
+        }
+    },

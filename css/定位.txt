@@ -1,0 +1,10 @@
+position:absolute，float会隐式地改变display的类型（display：none除外）。
+即是当元素设置position:absolute、float:left、float:right中任意一个时，
+都会让元素以display:inline-block的方式进行显示（
+特点是：可以设置长宽，默认宽度不占满父元素）。
+这时，再单独设置display:inline; display:block都是无效的。
+
+注：加了绝对定位和固定定位之后元素模式也会跟着变化，转为行内块。
+行内块的宽度和高度跟内容有关
+
+position:relative不会隐式改变display的类型
