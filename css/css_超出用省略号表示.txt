@@ -3,3 +3,11 @@ overflow:hidden; //超出的文本隐藏
 text-overflow:ellipsis; //溢出用省略号显示
 
 white-space:nowrap; //溢出不换行
+
+
+在td 中设置宽度 和上面三条属性。
+在table 中设置 table-layout：fixed 就可以了。
+
+overflow:hidden; 
+text-overflow:ellipsis;
+white-space:nowrap; 

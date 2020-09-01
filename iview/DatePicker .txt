@@ -5,3 +5,11 @@
                     placeholder="请选择评价时间" 
                     style="width: 100%">
                 </DatePicker>
+
+if(this.editParamsObj.startTime === "") return this.$Message.warning('请选择开始时间');
+      if(this.editParamsObj.endTime === "") return this.$Message.warning('请选择结束时间');
+      let start = this.editParamsObj.startTime;
+      let end = this.editParamsObj.endTime;
+      let startTime = new Date(start).getTime();
+      let endTime = new Date(end).getTime();
+      if(startTime >= endTime) return this.$Message.warning('结束时间要大于开始时间');

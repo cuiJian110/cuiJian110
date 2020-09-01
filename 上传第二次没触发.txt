@@ -1,2 +1,24 @@
 input value设置为null
 this.$refs.upLoadFile.value = null;
+
+// 去上传内容图片
+    gouploadcarouseContent() {
+      document.getElementById("contentImginput").value = null;
+      document.getElementById("contentImginput").click();
+    },
+    contentCheckpuppic(e) {
+      const file = e.target.files[0];
+      let fileType = file.type;
+      let reg = /image/;
+      if (!reg.test(fileType)) {
+        this.$Message.error('文件格式不在允许范围内,请重新选择');
+      } else {
+        this.$loading.show("正在上传");
+        api_pro.advertSet_insertPicture({file, imgType: 1, sourceType:3 }).then(res => {
+          this.$loading.hide();
+          if(res.code === 200) {
+            this.contentImgList.push(res.data)
+          }
+        })
+      }
+    },
