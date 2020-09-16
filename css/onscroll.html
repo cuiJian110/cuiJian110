@@ -1,0 +1,29 @@
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text /html; charset=utf-8"  />
+    <title>onscroll</title>
+    <script type="text /javascript">
+        function test() {
+            var panel = document.getElementById("Panel1");
+            var scrollTop, maxScroll, minScroll = 0;
+            scrollTop = panel.scrollTop;
+            maxScroll = panel.scrollHeight - panel.offsetHeight;
+            if (scrollTop >= maxScroll) {
+                alert("滚动到底了");
+                return false;
+            }
+            if (scrollTop <= 0) { alert("滚动到顶了"); return false; }
+        } 
+    </script>
+</head>
+
+<body>
+        <div id="Panel1" style="width:500px;height:70px;overflow:auto;" onscroll="test();">
+                 <div>
+             test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  /> test<br  />
+                     </div>
+            </div>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+table{ 
+width: 100%;
+table-layout:fixed;
+}
+注意：table必须设置table-layout:fixed;属性，文本溢出设置才能生效；
+td{
+width:300px;
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+}

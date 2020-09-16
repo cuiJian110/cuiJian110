@@ -1,0 +1,18 @@
+父级需要position: relative;
+设置宽高
+.demo-spin-article {
+    width: 200px;
+    height: 500px;
+    position: relative;
+}
+           <div class="demo-spin-article">
+                <h3>登金陵凤凰台</h3>
+                <address>李白</address>
+                <article>
+                    <p>凤凰台上凤凰游，凤去台空江自流。</p>
+                    <p>吴宫花草埋幽径，晋代衣冠成古丘。</p>
+                    <p>三山半落青天外，二水中分白鹭洲。</p>
+                    <p>总为浮云能蔽日，长安不见使人愁。</p>
+                </article>
+                <Spin size="large" fix v-if="spinShow"></Spin>
+            </div>
