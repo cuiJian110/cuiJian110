@@ -1,3 +1,9 @@
 限制 input 输入框只能输入纯数字
 
 1、onkeyup = "value=value.replace(/[^\d]/g,'')"
+
+有时页面需要限制输入框只能输入数字并且不能以0开头，可以通过以下方式实现
+
+οnkeyup="value=value.replace(/[^\d]/g, '').replace(/^0{1,}/g,'')"
+
+如果允许0开头，则可以不用写上第二个replace
