@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    const arr = [
+        {star: 2, rate: 50, count: 3, sum: 2, avgStar: 4},
+        {star: 4, rate: 100, count: 2, sum: 2, avgStar: 4}
+    ]
+    let arrEnd = [
+        {star: 1, rate: 0, count: 0, sum: 2, avgStar: 4},
+        {star: 2, rate: 0, count: 0, sum: 2, avgStar: 4},
+        {star: 3, rate: 0, count: 0, sum: 2, avgStar: 4},
+        {star: 4, rate: 100, count: 2, sum: 2, avgStar: 4},
+        {star: 5, rate: 0, count: 0, sum: 2, avgStar: 4}
+    ]
+    let arrn = [
+        {star: 1, rate: 0, count: 0, sum: 0, avgStar: 0},
+        {star: 2, rate: 0, count: 0, sum: 0, avgStar: 0},
+        {star: 3, rate: 0, count: 0, sum: 0, avgStar: 0},
+        {star: 4, rate: 0, count: 0, sum: 0, avgStar: 0},
+        {star: 5, rate: 0, count: 0, sum: 0, avgStar: 0}
+    ]
+    let it = arr[0];
+    arrn.forEach((item,index) => {
+        item.sum = it.sum;
+        item.avgStar = it.avgStar;
+        for(let i = 0; i < arr.length; i++) {
+            if(item.star === arr[i].star) {
+                arrn[index] = arr[i]
+            }
+        }
+    })
+    console.log(arrn)
+</script>
