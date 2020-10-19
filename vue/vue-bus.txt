@@ -1,0 +1,18 @@
+import Vue from 'vue';
+import VueBus from 'vue-bus';
+Vue.use(VueBus);
+
+在组件中使用 
+
+触发事件：
+
+this.$bus.emit("onslected",params)
+应对事件：
+mounted:function(){
+this.$bus.on("onslected",function(){
+
+});
+},
+destroyed:function(){
+this.$bus.off("onslected");
+}

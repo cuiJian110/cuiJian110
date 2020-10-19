@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .gen {
+            width: 500px;
+            height: 500px;
+            background-color: #ccc;
+        }
+        .s1 {
+            width: 400px;
+            height: 400px;
+            background-color: #999;
+        }
+        .s2 {
+            width: 200px;
+            height: 200px;
+            background-color: #666;
+        }
+    </style>
+</head>
+<body >
+    <div class="gen" >
+        <div class="s1" >
+            <div class="s2" >
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    document.querySelector(".s2").onclick = function(e) {
+        console.log("s2");
+        console.dir(e)
+        e.cancelBubble=true //不冒泡
+        e.stopPropagation() // 不传播
+    }
+    document.querySelector(".s1").onclick = function(e) {
+        console.log("s1");
+        console.dir(e)
+        e.cancelBubble=true //不冒泡
+        e.stopPropagation() // 不传播
+    }
+    document.querySelector(".gen").onclick = function(e) {
+        console.log("gen");
+        console.dir(e)
+        e.cancelBubble=true //不冒泡
+        e.stopPropagation() // 不传播
+    }
+    document.querySelector("body").onclick = function(e) {
+        console.log("body");
+        console.dir(e)
+        e.cancelBubble=true //不冒泡
+        e.stopPropagation() // 不传播
+    }
+    // function handleS2(e) {
+    //     console.log("s2");
+    //     console.dir(e)
+    //     // e.stopPropagation() // 不传播
+    //     e.cancelBubble=true //不冒泡
+    // }
+    // function handleS1() {
+    //     console.log("handleS1")
+    // }
+    // function handleGen() {
+    //     console.log("handleGen")
+    // }
+    // function handleBody() {
+    //     console.log("handleBody")
+    // }
+</script>

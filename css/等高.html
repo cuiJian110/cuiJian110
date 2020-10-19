@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    .layout{
+      display: table;
+      width: 320px;
+    }
+    .layout div{
+      display: table-cell;
+      width: 100px;
+      margin-right: 10px;
+    }
+    .layout div:nth-child(3n){
+      margin-right: 0;
+    }
+    .layout .b1{
+      /* width: 50%; */
+      /* height: 200px; */
+      background: #ccc;
+    }
+    .layout .b2{
+      /* width: 50%; */
+      background: #e4e4e4;
+    }
+    .layout .b3{
+      /* width: 50%; */
+      background: #999;
+    }
+    .layout .b4{
+      /* width: 50%; */
+      background: #666;
+    }
+</style>
+<body>
+    <div class="layout">
+        <div class="layout b1">
+            <p>1</p>
+            <p>2</p>
+        </div>
+        <div class="layout b2">center</div>
+        <div class="layout b3">center</div>
+        <div class="layout b4">center</div>
+    </div>
+</body>
+</html>
