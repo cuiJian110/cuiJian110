@@ -7,3 +7,6 @@
 οnkeyup="value=value.replace(/[^\d]/g, '').replace(/^0{1,}/g,'')"
 
 如果允许0开头，则可以不用写上第二个replace
+
+只能输入中文
+@on-keyup="createReq.code=createReq.code.replace(/[\u4e00-\u9fa5]/ig,'')"
