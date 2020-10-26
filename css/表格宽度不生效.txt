@@ -1,0 +1,12 @@
+表格Table宽度设置无效的解决方法
+table-layer:fixed
+
+bootstrap中使用table时发现不管用width赋值方式都无法改变table>td的宽度
+
+解决方法：
+
+设置table：table-layout:fixed
+
+设置table>td：width：绝对宽度和百分比都可以
+
+如果table宽度定为100%了，可以留一个td不设置宽度，让它自由伸缩。
