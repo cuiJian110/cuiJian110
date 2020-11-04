@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const name1 = "fun1";
+    const name2 = "fun2";
+    const name3 = "fun3";
+    const name4 = "fun4";
+    const objName = {
+        name1,
+        name2,
+        name3,
+        name4,
+    }
+    const obj = {
+        [objName.name3]() {
+            console.log(objName.name3)
+        }
+    }
+    obj[objName.name3]()
+</script>
+</html>
