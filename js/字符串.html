@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=12.0,initial-scale=1.0,">
+    <title>Document</title>
+</head>
+<style>
+    .myDesc {
+        display: block;
+        font-size: 12px;
+        transform: scale(2);
+    }
+</style>
+<body>
+    <span class="myDesc">jjj</span>
+    <br>
+    <a href="https://www.cnblogs.com/jiajialove/p/11382855.html">JS-字符串截取方法slice、substring、substr的区别</a>
+    <br>
+    <a href="https://blog.csdn.net/yuhk231/article/details/88191846">JavaScript中String的match方法详解</a>
+</body>
+<script>
+    // const str = 'width=device-width, initial-scale=2.0,initial-scale=1.0,';
+    // const result = str.match(/a/g);
+    // const res = str.replace(/[a|b]/g,"5")
+    // var match = str.match(/initial\-scale=([\d\.]+)/);
+    // console.log(match)
+    // var paragraph = 'The x quick brown fo jumps over the lazy dog. It barked.';
+    // var regex = /[A-Z]/g;
+    // var found = paragraph.match(/x/);
+    // console.log(found);
+    var str = 'ab cd ef gh ab';
+    // var re = /see (chapter \d+(\.\d)*)/i;
+    // var found = str.match(re);
+    // console.log(found);
+    // var r = /(ab|cd)+|ef/
+    // console.log(r.test("c"))
+    // str   =   str.replace(/\s+/g,"");   
+    // console.log(str);  
+    // console.log(str.replace(" ",""))
+    const str1 = "0.sadfsdf。1.HR专业功底弱，各大模块都懂一些，但都不精。2.目前是在金融行业做事，但想向互联网行业发展。从业背景被限制,发电工。3.只发生过argue断更"
+    const arr = str1.split(/\d/)
+    // console.log(arr)
+    const arr1 = arr.map(item => item.slice(1)).filter(i => i!=="")
+    // console.log(arr1)
+    // const s = "s";
+    const f = function() {
+
+    }
+    const b = new f();
+    // console.dir(f);
+    // console.log(f.prototype.constructor);
+    console.log(new Number(5).constructor)
+    // console.log(Object.prototype.toString(b))
+    // console.dir(s)
+    // console.log("".constructor)
+    // console.log(1.constructor)
+</script>
+</html>

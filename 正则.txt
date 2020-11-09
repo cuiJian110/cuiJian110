@@ -7,3 +7,4 @@
 /java(script) ?/ 匹配的是字符串 "java",其后既可以有 "script",也可以没有. 
 
 /(ab|cd)+|ef) / 匹配的既可以是字符串 "ef",也可以是字符串"ab" 或者 "cd" 的一次或多次重复.
+https://www.jb51.net/article/72044.htm

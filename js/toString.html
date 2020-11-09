@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    // ;(function(win) {
+    //     console.log(win.document)
+    // })(window)
+</script>
+<body>
+    
+</body>
+<script>
+    // const aa = "aa";
+    // const aa = {}
+    const aa = "0123456789";
+    // const aa = [1,2,3,{}];
+    // console.log(Object.prototype.toString.call(aa))
+    // console.log(aa.toString())
+    const str = Object.prototype.toString.call(aa);
+    // console.log(str.slice(8,-1))
+    // [object String]
+    // console.log(Object.prototype.toString.call(123));    //[object Number]
+    // console.log(Object.prototype.toString.call('123'));    //[object String]
+    // console.log(Object.prototype.toString.call(undefined));    //[object Undefined]
+    // console.log(Object.prototype.toString.call(true));    //[object Boolean]
+    // console.log(Object.prototype.toString.call({}));    //[object Object]
+    // console.log(Object.prototype.toString.call([]));    //[object Array]
+    // console.log(Object.prototype.toString.call(function(){}));    //[object Function]
+    // console.log(Object.prototype.toString.call(null));    //[[object Null]]
+    function getDataType(val) {
+        return Object.prototype.toString.call(val).slice(8,-1);
+    }
+    // console.log(getDataType(123));    //[object Number]
+    // console.log(getDataType('123'));    //[object String]
+    // console.log(getDataType(undefined));    //[object Undefined]
+    // console.log(getDataType(true));    //[object Boolean]
+    // console.log(getDataType({}));    //[object Object]
+    // console.log(getDataType([]));    //[object Array]
+    // console.log(getDataType(function(){}));    //[object Function]
+    // console.log(getDataType(null));    
+
+     // 重写push等方法，然后再把原型指回原方法
+    var ARRAY_METHOD = [ 'push', 'pop', 'shift', 'unshift', 'reverse',  'sort', 'splice' ];
+    var array_methods = Object.create(Array.prototype);
+    ARRAY_METHOD.forEach(method => {
+        array_methods[method] = function () {
+        // 拦截方法
+        console.log('调用的是拦截的 ' + method + ' 方法，进行依赖收集');
+        return Array.prototype[method].apply(this, arguments);
+        }
+    });
+    
+    var arr = [1,2,3]
+    arr.__proto__ = array_methods // 改变arr的原型
+    arr.unshift(6)
+    console.log(arr)
+</script>
+</html>

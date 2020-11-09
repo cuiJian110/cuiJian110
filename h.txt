@@ -67,7 +67,7 @@ console.log(''.constructor === String)//true
     console.log(new Error().constructor === Error)//true
     console.log([].constructor === Array)//true
     console.log(arr.constructor === Array)//true
-
+https://www.cnblogs.com/yadiblogs/p/10750775.html
 解决样式问题 不行就在外面加div
 
 <template>
