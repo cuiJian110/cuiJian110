@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="https://blog.csdn.net/qq_34629352/article/details/104934462">yield</a>
+</body>
+<script>
+    // function * gen() {
+    //     yield console.log(1)
+    //     yield console.log(2)
+    //     console.log(3)
+    // }
+    // let g = gen();
+
+    // console.log(g.next())
+    // console.log(g.next())
+    // console.log(g.next())
+
+    // function delay(ms) {
+    //     return new Promise((resolve,reject) => {
+    //         setTimeout(resolve,ms)
+    //     })
+    // }
+    // console.log(1)
+    // delay(1000).then(res => console.log(2))
+    // console.log(3)
+    // function* baum() {
+    //   let a = yield delay(300).then(() => console.log(1))
+    //   let b = yield console.log(2)
+    //   let c = yield delay(300).then(() => console.log(3))
+    //   let d = yield console.log(4)
+    // }
+
+    // const b = baum()
+
+    // console.log(b.next())
+
+    // console.log(b.next())
+
+    // console.log(b.next())
+
+    // console.log(b.next())
+    // b.next()
+    // b.next()
+    // b.next()
+    // b.next()
+    const fs = require('fs')
+
+    // Promise 版的readFile
+    const readFile = function (fileName) {
+        return new Promise(function (resolve, reject) {
+            fs.readFile(fileName, function (err, data) {
+                if (err) return reject(error);
+                resolve(data);
+            })
+        })
+    }
+
+    const gen = function* () {
+        let f1 = yield readFile('a.txt');
+        let f2 = yield readFile('b.txt');
+
+        console.log('F1--->', f1.toString());
+        console.log('F2--->', f2.toString());
+    }
+
+
+    // 基于 Generator 和 Promise 的自动执行器
+    function run(gen) {
+
+        let g = gen();
+
+        function next(data) {
+
+            let result = g.next(data);
+
+            if (result.done) return result.value;
+
+            result.value.then(function (data) {
+                next(data);
+            });
+        }
+        next();
+    }
+
+    run(gen);
+</script>
+
+</html>
