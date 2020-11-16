@@ -6,12 +6,43 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <a href="https://blog.csdn.net/weixin_30505751/article/details/101312324?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.channel_param&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.channel_param">
+        *replace
+    </a>
+    <a href="https://www.bingdou.net/news/129.html">(.*?)  (.*)?</a>
 </body>
 </html>
 <script>
-    let str = "abcdefghij12345678910";
-    console.log(str.substr(0,10)+"...");
+
+    // let str = "ab cd ef gh ij 12 34 56 78 91 0";
+    // console.log(str.substr(0,10)+"...");
     // 开始位置，截取长度
-    console.log(str)
+    // console.log(str)
+    // const ns = str.replace(/\d/g,"a") 把数字替换为a
+    // const ns = str.replace(/[ ]*/g,"")
+    // console.log(ns)
+    const data = {
+        msg: "data中的msg",
+        age: 90
+    }
+    var str="{{msg}}哈哈哈{{age}}";
+    // const ns = str.replace(/jb/g,"java")
+    // const ns = str.replace(/jb/g,(...args) => {
+    //     console.log(args)
+    //     return "jjjj"
+    // })
+    // const ns = str.replace(/\{\{(.*?)\}\}/g, (match, key) => data[key.trim()]);
+    // (.+?)ok
+    // (.+) ["{{msg}}哈哈哈{{age}}", "msg}}哈哈哈{{age", 0, "{{msg}}哈哈哈{{age}}"]
+    // (.*) ["{{msg}}哈哈哈{{age}}", "msg}}哈哈哈{{age", 0, "{{msg}}哈哈哈{{age}}"]
+    // (.*)?["{{msg}}哈哈哈{{age}}", "msg}}哈哈哈{{age", 0, "{{msg}}哈哈哈{{age}}"]
+    // (.+)?["{{msg}}哈哈哈{{age}}", "msg}}哈哈哈{{age", 0, "{{msg}}哈哈哈{{age}}"]
+    // (.+?) ["{{msg}}", "msg", 0, "{{msg}}哈哈哈{{age}}"] ["{{age}}", "age", 10, "{{msg}}哈哈哈{{age}}"]
+    // (.*?) ["{{msg}}", "msg", 0, "{{msg}}哈哈哈{{age}}"] ["{{age}}", "age", 10, "{{msg}}哈哈哈{{age}}"]
+    const ns = str.replace(/\{\{(.*?)\}\}/g, (...args) => {
+        console.log(args)
+        // return "jjjj"
+    })
+
+console.log(ns);
 </script>
