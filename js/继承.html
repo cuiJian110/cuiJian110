@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        html { -webkit-text-size-adjust: none; }
+        .f1 {
+            font-size: 12px;
+        }
+        .f2 {
+            /* transform: scale(0.5); */
+            font-size: 10px;
+            /* margin-left: -180px; */
+        }
+    </style>
+    <p class="f1">我是12px</p>
+    <p class="f2">我是10px</p>
+</body>
+<script>
+    let cat = {
+        sound: "s",
+        legs: 4
+    }
+    let pig = {aaa: "pigaaa",__proto__: cat};
+
+    // console.log(cat)
+    // console.log(pig.legs)
+    // pig.legs = 6;
+    // console.log(cat.legs)
+    console.dir(Array)
+    // console.log(Object.getPrototypeOf(pig))
+</script>
+</html>

@@ -1,8 +1,30 @@
 <Poptip
-                        v-if="item.sourceType==0"
-                        confirm
-                        transfer
-                        :title="'确定删除'+item.title+'么'"
-                        @on-ok="handleDelete(item)">
-                        <span  class="asrouter">删除</span>
-                    </Poptip>
+    v-if="item.sourceType==0"
+    confirm
+    transfer
+    :title="'确定删除'+item.title+'么'"
+    @on-ok="handleDelete(item)">
+    <span  class="asrouter">删除</span>
+</Poptip>
+
+<Poptip trigger="hover" placement="left-start">
+    <img class="testRules cp" src="static/img/icon/test_rules.png" alt="">
+    <div slot="title">
+    <div class="tipsTile">
+        测评须知！
+    </div>
+    </div>
+    <div slot="content">
+    古语云:性格决定命运。从现代人力资源管理角度:职业选择要和人格特质匹配<br>
+    无论你是刚入HR职业的小白，还是已经征战多年的HR老鸟，选择正确的职业<br>
+    路径可以让你事半功倍! <br>
+    <div class="h10"></div>
+    · 先不要着急！ · 测评前⼀定要仔细阅读⼀下本篇内容，以达到最好的测评效<br>
+        &nbsp;&nbsp;果 <br>
+    · 我们的每⼀道题都有四个答案，按照程度高低进行区分,在选择时请认真思考<br>
+        &nbsp;&nbsp;哪个最符合你的真实情况。<br>
+    · 人格没有好坏，认清自己，未来才能找，到更适合自己的⽅方向。请跟随感<br>
+        &nbsp;&nbsp;觉选出最符合你的选项。 注：本测评总共180道题，预计15-20分钟，需要<br>
+        &nbsp;&nbsp;点您的耐⼼呦!"
+    </div>
+</Poptip >

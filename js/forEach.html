@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    var array = ["first","second","third","fourth"];
+        
+        // 会遍历数组所有元素，只是执行到第3次师，return false下面的代码不再执行而已
+        array.forEach(function(item,index){
+            if (item == "third") {
+                break;
+            }
+            console.log(item);// first,second
+        });
+</script>

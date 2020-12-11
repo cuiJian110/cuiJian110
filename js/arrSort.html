@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // let arr = [567,2,34,45,465,675,1,3,23,4,56,555];
+    // let arr = [567,29,34,8,5];
+    // 《《《
+    // function sortMaopao(arr) {
+    //     let len = arr.length;
+    //     for(let i = 0; i < len; i++) {
+    //         for(let j = 0; j < len; j++) {
+    //             if(arr[j] > arr[j+1]) {
+    //                 let temp;
+    //                 temp = arr[j];
+    //                 arr[j] = arr[j+1];
+    //                 arr[j+1] = temp;
+    //             }
+    //         }
+    //     }
+    //     return arr;
+    // }
+    // console.log(sortMaopao(arr))
+    // function sortXuanze(arr) {
+    //     let len = arr.length;
+    //     let temp;
+    //     let minIndex;
+    //     for(let i = 0; i < len-1; i++) {
+    //         minIndex = i;
+    //         for(let j = i+1; j < len; j++) {
+    //             if(arr[j] < arr[minIndex]) {
+    //                 minIndex = j;
+    //             }
+    //         }
+    //         temp = arr[i];
+    //         arr[i] = arr[minIndex];
+    //         arr[minIndex] = temp;
+    //     }
+    //     return arr;
+    // }
+    // console.log(sortXuanze(arr))
+    // function maopao(arr) {
+    //     let len = arr.length;
+    //     for(let i = 0; i < len - 1; i++) {
+    //         for(let j = 0; j < len - i; j++) {
+    //             if(arr[j] > arr[j+1]) {
+    //                 let temp = arr[j]
+    //                 arr[j] = arr[j+1]
+    //                 arr[j+1] = temp;
+    //             }
+    //         }
+    //     }
+    //     return arr;
+    // }
+    // console.log(maopao(arr))
+    // function xunze(arr) {
+    //     let len = arr.length;
+    //     for(let i = 0; i < len-1; i++) {
+    //         let minIndex = i;
+    //         let temp;
+    //         for(let j = i + 1; j < len; j++) {
+    //             if(arr[j] > arr[minIndex]) {
+    //                 minIndex = j
+    //             }
+    //         }
+    //         temp = arr[i]
+    //         arr[i] = arr[minIndex]
+    //         arr[minIndex] = temp;
+    //     }
+    //     return arr;
+    // }
+    // console.log(xunze(arr))
+    const arr = {
+        data: [
+            ["zs",12,"nan","1999-08-15"],
+            ["ls",111,"nv","2000-02-14"]
+        ],
+        des: [
+            {name: "user_name",note: ""},
+            {name: "age",note: ""},
+            {name: "gender1",note: ""},
+            {name: "date1",note: ""},
+        ]
+    }
+    // let n = [
+    //     {user_name: "zs", age: 12, gender1: "nan", date1: "1999-08-15"},
+    //     {user_name: "zs", age: 12, gender1: "nan", date1: "1999-08-15"}
+    // ]
+    // let na = [];
+    // arr.data.forEach(item => {
+    //     let n = {};
+    //     arr.des.forEach((ele,index) => {
+    //         n[ele.name] = item[index]
+    //     })
+    //     na.push(n)
+    // })
+    // console.log(na)
+    let na = arr.data.map(item => {
+        let n = {};
+        arr.des.forEach((ele,index) => {
+            n[ele.name] = item[index]
+        })
+        return n;
+    })
+    console.log(na)
+    arr.data.filter(item => {
+        item.aa = "aaa"
+        return true;
+    })
+</script>
+</html>

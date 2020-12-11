@@ -1,0 +1,3 @@
+<Progress vertical :percent="myPercent" hide-info/>
+    <span class="mpTitle">{{myPercent}}%</span>
+</Progress>
