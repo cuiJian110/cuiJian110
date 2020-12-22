@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="oper">
+        <button onclick="changeName()">changeName</button>
+    </div>
+    <div class="name1">
+        name: {{name}} age: {{age}}
+    </div>
+    <div class="name2">
+        {{age}}
+    </div>
+    <div class="name3">
+
+    </div>
+</body>
+<script>
+    class Dep {
+        constructor() {
+            this.subList = []
+        }
+        depend() {
+            if(autoRun) {
+                this.subList.push(autoRun)
+            }            
+        }
+        notify() {
+            this.subList.forEach(sub => sub())
+        }
+    }
+    let obj = {
+        name: "zs",
+        age: 90,
+        dog: {
+            dname: "erhao",
+            dage: 1
+        }
+    }
+    function observe(obj) {
+        if(obj && typeof obj === "object") {
+            Object.keys(obj).forEach(key => {
+                observe(obj[key])
+                let value = obj[key]
+                let dep = new Dep();
+                Object.defineProperty(obj,key,{
+                    get() {
+                        dep.depend();
+                        return value
+                    },
+                    set(nv) {
+                        if(nv !== value) {
+                            value = nv
+                            dep.notify();
+                        }
+                    }
+                })
+            })
+            
+        }
+    }    
+    observe(obj)
+    let autoRun;
+    function wrapRun(cb) {
+        function innerRun() {
+            autoRun = cb;
+            cb();
+            autoRun = null;
+        }
+        innerRun();
+    }
+    function complieName1() {
+        let ele = document.querySelector(".name1");
+        let innerText = ele.innerText;
+        let str = innerText.replace(/\{\{(.*?)\}\}/g,(...arg) => {
+            console.log(arg)
+            return obj[arg[1]]
+        })
+        ele.innerText = str;
+    }
+    // complieName1();
+    // wrapRun(complieName1)
+    wrapRun(() => {
+        // document.querySelector(".name2").innerHTML = obj.name
+        let ele = document.querySelector(".name1");
+        let innerText = ele.innerText;
+        let str = innerText.replace(/\{\{(.*?)\}\}/g,(...arg) => {
+            console.log(arg)
+            return obj[arg[1]]
+        })
+        ele.innerText = str;
+    })
+    // wrapRun(() => {
+    //     document.querySelector(".name3").innerHTML = obj.name
+    // })
+    function changeName() {
+        obj.name = "newName"+Math.floor(Math.random()*10000)
+    }
+</script>
+</html>

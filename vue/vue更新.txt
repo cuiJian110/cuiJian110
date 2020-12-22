@@ -1,0 +1,2 @@
+先用this.$foureupdate()
+不行用延迟

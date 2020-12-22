@@ -26,10 +26,20 @@
     // console.log(b1.c1)
     // b1.f1()
     let v1 = {};
-    console.log(v1.constructor === Object)
-    let v2 = new Object();
-    console.dir(v2)
-    let v3 = []
-    console.log(v3.constructor)
+    // console.log(v1.constructor === Object)
+    // let v2 = new Object();
+    // console.dir(v2)
+    // let v3 = []
+    // console.log(v3.constructor);
+    let obj = {
+        // "创新1": "懂得创新1",
+        // "创新2": "懂得创新2",
+        // "创新3": "懂得创新3",
+    }
+    if(obj.hasOwnProperty("创新1")) {
+        console.log("obj && obj.hasOwnProperty()")
+    }
+    // console.log(obj && obj.hasOwnProperty("创新1"))
+    // console.log(obj)
 </script>
 </html>
