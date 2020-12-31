@@ -53,3 +53,17 @@
      }
     })
    </script>
+   <script>
+       const formData = new FormData();
+        for(let i = 0; i < fileList.length; i++) {
+            formData.append("file",fileList[i])
+        }
+        this.$loading.show();
+        //上传
+        api.insetPicture_(formData).then(res => {
+            this.$loading.hide();
+            if (res.code == 200) {
+            this.descimgs = [...this.descimgs, ...res.data]
+            }
+        });
+   </script>
