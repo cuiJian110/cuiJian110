@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="https://github.com/zhiqiang21/blog/issues/17">装饰者模式</a>
+</body>
+<script>
+    function aa() {
+        console.log("aa")
+    }
+    Function.prototype.before = function(callback) {
+        let _this = this;
+        callback();
+        _this()
+    }
+    aa.before(function() {
+        console.log("先执行的")
+    })
+</script>
+</html>

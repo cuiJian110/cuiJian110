@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">btn</button>
+    <button id="btn1">btn1</button>
+</body>
+<script>
+    document.querySelector("#btn").addEventListener("click",jiezhi(handleBtn,200))
+    document.querySelector("#btn1").addEventListener("click",jiezhi(handleBtn1,200))
+    function handleBtn() {
+        console.log("000")
+    }
+    function handleBtn1() {
+        console.log("111")
+    }
+    function jiezhi(callback,time) {
+        let timer = null;
+        return function() {
+            if(timer) {
+                clearTimeout(timer);
+                timer = setTimeout(callback,time)
+            } else {
+                timer = setTimeout(callback,time)
+            }
+        }
+    }
+</script>
+</html>

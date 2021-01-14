@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="vip-package-item" :class="membershipInfo.id == item.id ? 'vip-package-selected':''"
+                v-for="(item,index) in VIPpackageData"              :key="item.id"
+                @click="selectPackage($event,index,item)">
+        <div v-if="index !== 0 || index === 0 && !zdxf">
+            <img class="icon" v-if="item.corner_icon" :src="item.corner_icon" alt  />
+                <p class="hot" v-if="item.corner_mark">{{item.corner_mark}}</p>
+                <p class="type">{{item.name}}</p>
+                <p class="price">￥<span>{{item.price}}</span></p>
+                <p class="or-p" v-if="item.origin_price">￥<span>{{ parseFloat( item.origin_price).toFixed(2) }}</span>
+            </p>
+        </div>
+    </div>
+</body>
+<!-- <script>
+    function creatCompare(propertyName) {
+        return function (obj1,obj2) {
+            var value1=obj1[propertyName];
+            var value2=obj2[propertyName];
+            console.log(obj1)
+            if(value1<value2){
+                return -1
+            }else if(value1>value2){
+                return 1
+            }else {
+                return 0
+            }
+        }
+    }
+    const arr = [
+        {key: "C",title: "C"},
+        {key: "A",title: "A"},
+        {key: "R",title: "R"},
+        {key: "D",title: "D"}
+    ]
+    console.log(arr.sort(creatCompare("key"))) 
+    // const an = arr.sort((a,b) => a.key - b.key);
+    // console.log(arr.sort((a,b) => a.key - b.key))
+</script> -->
+</html>
+<script>
+const arr = [
+    {checked: 0, name: "系统管理1", children: [
+        {checked: 0, name: "系统管理1-1", children:[]},
+        {checked: 0, name: "系统管理1-2", children:[]}
+    ]},
+    {checked: 0, name: "系统管理2", children: [
+        {checked: 0, name: "系统管理2-1", children:[]},
+        {checked: 0, name: "系统管理2-2", children:[]}
+    ]},
+    {checked: 0, name: "系统管理3", children: [
+        {checked: 0, name: "系统管理3-1", children:[]},
+        {checked: 0, name: "系统管理3-2", children:[]}
+    ]},
+    {checked: 0, name: "系统管理4", children: [
+        {checked: 1, name: "系统管理4-1", children:[]},
+        {checked: 0, name: "系统管理4-2", children:[]}
+    ]},
+    {checked: 0, name: "系统管理5", children: [
+        {checked: 0, name: "系统管理5-1", children:[]},
+        {checked: 0, name: "系统管理5-2", children:[
+            {checked: 1, name: "系统管理5-2-1", children: []}
+        ]}
+    ]},
+    {checked: 0, name: "系统管理6", children: [
+        {checked: 0, name: "系统管理6-1", children:[]},
+        {checked: 0, name: "系统管理6-2", children:[
+            {checked: 0, name: "系统管理6-2-1", children: [
+                {checked: 1, name: "系统管理6-2-1-1", children: []}
+            ]}
+        ]}
+    ]},
+]
+function diguiGetChecked(obj) {
+    obj.remark = 0;
+    function aa(obj_) {
+        if(obj_.checked) {
+            obj.remark = 1;
+        } else {
+            if(obj_.children && obj_.children.length !==0 ) {
+                obj_.children.forEach(item => {
+                    aa(item)
+                })
+            }
+        }
+    }
+    aa(obj)
+};
+function diguiSet(arr) {
+    arr.forEach(item => {
+        // if(item.checked) {
+        //     item.checked_ = true;
+        // } else {
+        //     item.checked_ = false;
+        // }
+        diguiGetChecked(item)
+        if(item.children && item.children.length !== 0) {
+            diguiSet(item.children)
+        }
+    })
+};
+diguiSet(arr);
+console.log(arr)
+</script>
+<!-- <script>
+    let isEqual = true;
+    let arr1 = [
+        {imgUrl: "aaa"},
+        {imgUrl: "bbb"},
+        {imgUrl: "ccc"}
+    ]
+    let arr2 = [
+        {imgUrl: "aaa"},
+        {imgUrl: "bbb1"},
+        {imgUrl: "ccc"}
+    ]
+    arr1.forEach((item,index) => {
+        if(item.imgUrl !== arr2[index].imgUrl) {
+            isEqual = false;
+        }
+    })
+    console.log(isEqual);
+    // const arr = [4,6,7,123,2,23,22]
+    // let arrn = [];
+    // let pl = []
+    // const pro = new Promise((res,rej) => {
+        // arr.forEach(item => {
+        //     pl.push(new Promise((res,rej) => {
+        //         setTimeout(() => {
+        //             arrn.push(item);
+        //             console.log(item)
+        //             res()
+        //         }, item);
+        //     }))
+        // })
+        // Promise.all(pl).then(res => {
+        //     console.log(arrn)
+        // })
+        // res(12);
+    // })
+    // pro.then(res => {
+    //     console.log(res)
+    //     console.log(arrn)
+    // })
+    // let pl = [];
+
+    // const p2 = new Promise((res,rej) => {
+    //     setTimeout(() => {
+            // console.log("2秒啦")
+        //     res()
+        // }, 2000);
+        
+    // })
+    // p2.then(res => {
+        // console.log("该我了")
+    // })
+    // function getData() {
+        // setTimeout(() => {
+            // console.log("over")
+            // return Promise.resolve({code: 200,data: []})
+        // }, 1000);
+    // }
+    // getData().then(res => {
+    //     console.log(res)
+    // })
+</script> -->
+<!-- <script>
+    const arr = [10,11,13,15,17];
+    const str = "10,11,13,15,17,474,495,384";
+    const str1 = str.split(",").filter(i => arr.findIndex(i_ => i_ == i) === -1).join(",");
+    console.log(str1)
+</script> -->
+<!-- <script>
+    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let ids = [4, 5, 6];
+    let str = arr.filter(i => ids.findIndex(i_ => i_ === i) === -1).join(",");
+    console.log(str)
+    let arrn = [1, 2, 3, 4, 6, 7, 8, 9, 10];
+    let delSign = function (e) {
+        let id = e.currentTarget.dataset.id
+        let ind = e.currentTarget.dataset.ind
+        let dleId = this.data.currentData[id].cell[ind].id
+        let idss = APP.GLOBAL_DATAS['storage' + APP.STATE.r_play_type]
+        var array = idss.split(",")
+        console.log(array);
+        let strID = array.filter(i => i != dleId).join(",");
+        Request.request({
+            method: "POST",
+            url: 'BjjSutrasList/getLessionTodelet',
+            data: {
+                ids: strID,
+            },
+        }).then(res => {
+            console.log("我点击删除的id删除里面的数据");
+            console.log(res);
+            let data = []
+            for (let i in res) { data.push(res[i]) }
+            this.setData({ allData: data, currentData: data[0].sutraslist })
+        })
+        Send.send('deleteLocal', dleId)
+    }
+</script> -->
+<!-- <script>
+    let a = [
+        [{name: "a", deviceId: "a"}],
+        [{name: "b", deviceId: "b"}],
+        [{name: "c", deviceId: "c"}],
+        [{name: "d", deviceId: "d"}],
+        [{name: "d", deviceId: "d"}],
+        [{name: "e", deviceId: "e"}]
+    ]
+    const arrk = [];
+    a.forEach(item => {
+        item.forEach(item_ => {
+            if(arrk.findIndex(i => i.deviceId === item_.deviceId) === -1) {
+                arrk.push(item_);
+            }
+        })
+    })
+    console.log(arrk)
+    // let zdxf = true;
+    // let arr = [
+    //     { deviceId: 1 },
+    //     { deviceId: 2 },
+    //     { deviceId: 3 },
+    //     { deviceId: 4 },
+    //     { deviceId: 5 },
+    //     { deviceId: 6 }
+    // ]
+    // const obj1 = {deviceId: 6};
+    // const obj2 = {deviceId: 7};
+    // const obj3 = {deviceId: 8};
+    // if(arr.findIndex(i => i.deviceId === obj2.deviceId) === -1) {
+    //     arr.push(obj2)
+    // }
+    // console.log(arr)
+    // const couponlist = [
+    //     {id: 1, title: "优惠券1"},
+    //     {id: 2, title: "优惠券2"},
+    //     {id: 3, title: "优惠券3"},
+    //     {id: 4, title: "优惠券4"},
+    //     {id: 5, title: "优惠券5"},
+    //     {id: 6, title: "优惠券6"},
+    //     {id: 7, title: "优惠券7"},
+    //     {id: 8, title: "优惠券8"},
+    //     {id: 9, title: "优惠券9"},
+    //     {id: 10, title: "优惠券10"},
+    //     {id: 11, title: "优惠券11"},
+    // ]
+    // const currentList = [
+    //     {id: 7, title: "优惠券7"},
+    //     {id: 8, title: "优惠券8"},
+    //     {id: 9, title: "优惠券9"},
+    // ]
+    // couponlist.forEach(item => {
+    //     if(currentList.findIndex(i => i.id === item.id) !== -1) {
+    //         item._check = true;
+    //     }
+    // })
+    // console.log(couponlist)
+    // if (zdxf) {
+    //     arr = arr.filter((item, index) => index !== 0)
+    // }
+    // console.log(arr)
+    // let NoneVIPpackageData = that.VIPpackageData.slice(0, -1);
+    // let ShowVIPpackageData = that.VIPpackageData;
+    // if (this.zdxf == true) {
+    //     that.VIPpackageData = NoneVIPpackageData;
+    // } else {
+    //     that.VIPpackageData = ShowVIPpackageData;
+    // }
+    // console.log(this.zdxf);
+</script> -->
+<!-- <script>
+    // const arr = [
+    //     {id: 1, name: "zs1"},
+    //     {id: 2, name: "zs2"},
+    //     {id: 3, name: "zs3"},
+    //     {id: 4, name: "zs4"}
+    // ]
+    // let del_id = 1;
+    // arr.splice(arr.findIndex(i => i.id === del_id),1);
+    // arr.findIndex(i => i.id === id) 返回索引
+    // console.log(arr)
+    // const na = arr.filter(i => i.id !== del_id);
+    // console.log(na)
+    // var str = "";
+    // if(str != "") {
+    //     console.log("bu wei kong")
+    // }
+    // const arr = [1,2,3];
+    // const newA = [...arr];
+    // arr.push(90)
+    // console.log(arr,newA)
+    // const p1 = {name: "zs1", id: 1};
+    // const p2 = {name: "zs2", id: 2};
+    // const p3 = {name: "zs3", id: 3};
+    // const arr = [p1,p2,p3];
+    // const a = [...arr];
+    // const b = JSON.parse(JSON.stringify(arr))
+    // p1.name="00"
+    // console.log(b[0] === p1)
+    // console.log(arr,b)
+    // let list = []
+    // for(var i = 0; i < 6; i++) {
+    //     ((item) => {
+    //         setTimeout(() => {
+    //             console.log(item)
+    //             list.push(item)
+    //         }, 0)})(i)
+    // }
+    // console.log(list)
+    // let a = ""
+    // ;(() => {
+    //     var a = 5
+    // })()
+    // console.log(a)
+    // const cost = (function() {
+    //     let arr = [];
+    //     return function () {
+    //         if(arguments.length === 0) {
+    //             let sum = 0;
+    //             for(let i = 0; i < arr.length; i++) {
+    //                 sum += arr[i];
+    //             }
+    //             return sum;
+    //         }  else {
+    //             Array.prototype.push.apply(arr,arguments)
+    //             return arguments.callee;
+    //         }
+    //     }
+    // })()
+    // // console.log(cost)
+    // cost(10)
+    // cost(20)(30)
+    // console.log(cost())
+    // const name = 'Jane';
+    // const age = 20
+    // const person = {
+    //     [name]: true,
+    //     [age]: true
+    // }
+    // person[name] = "aaa"
+    // console.log(person)
+    // var obj = {};  
+    // obj.setAttrName = 'Tom'  
+    // console.log(obj)
+
+    // console.log(a)
+    // var a;
+    // console.log(a)
+    // a = 10
+    // console.log(a)
+    // function a() {
+    //     let c = 1;
+    // }
+    // console.log(a)
+
+    // function a() {
+    //     let c = 1;
+    // }
+    // console.log(a)
+    // console.log(a)
+    // a = 10
+    // console.log(a)
+    // console.log(a)
+    // let a = 90;
+    // function setA() {
+    //     var a = 10
+    // }
+    // setA()
+    // console.log(a)
+
+    // var a = 10;
+    // function a(x) {
+    //     console.log(a);
+    //     function x() { }
+    // };
+    // a();
+    // function a(x) {
+    //     console.log(a);
+    //     function x() { }
+    // };
+    // a = 10;
+
+    // a();
+
+    // function a() {
+    //     var a = 100;
+    //     console.log(a);
+    // };
+    // console.log(a);
+    // a();
+    // console.log(a);
+    // console.log(a);
+
+
+    // function ab(x) {
+    //     console.log(x);
+    //     var x;
+    //     console.log(x);
+    // };
+    // ab(3);
+
+    // var foo = { 
+    //     n: 1 
+    // };
+    // (function (foo) {
+    //     console.log(foo.n);
+    //     foo.n = 3;
+    //     var foo = { n: 2 };
+    //     console.log(foo.n);
+    // })(foo);
+    // console.log(foo.n);
+
+    // 1
+</script> -->
