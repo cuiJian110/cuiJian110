@@ -11,8 +11,8 @@
 </html>
 <script>
     function getPro() {
-            console.log("999")
-            return Promise.resolve({msg: "success", code: 200})
+            console.log("9991")
+            return Promise.resolve({msg: "success1", code: 2001})
     }
     function getPro_() {
         return new Promise((resolve,reject) => {
@@ -22,7 +22,7 @@
             },1000)
         })
     }
-    getPro_().then(res => {
+    getPro().then(res => {
         console.log(res)
     })
 </script>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 
+    // for(let i = 1; i <= 9; i++) {
+    //     for(let j = 1; j <= i; j++) {
+    //         document.write(`${j}*${i}=${i*j}`)
+    //         document.write("&nbsp;&nbsp;")
+    //     }
+    //     document.write("<br />")
+    // }
+    // 
+    // for(let i = 1; i <= 9; i++) {
+    //     for(let k = 9; k >= i; k--) {
+    //         document.write("&nbsp;")
+    //     }
+    //     for(let j = 1; j <= i; j++) {
+    //         document.write("*")
+    //     }
+    //     document.write("<br />")
+    // }
+    
+    var name = 'World!';
+    (function () {
+			if (typeof name === 'undefined') {
+				var name = 'Jack';
+				console.log('Goodbye ' + name);
+			} else {
+				console.log('Hello ' + name);
+			}
+    })();
+</script>
+</html>

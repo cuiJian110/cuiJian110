@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #div{
+        width: 200px;
+        height: 200px;
+        border:3px solid cyan;
+    }
+</style>
+<body>
+    <a href="https://www.cnblogs.com/kellyBlog/p/6397375.html">链接</a>
+    <div id="div"></div>
+</body>
+<script>
+    var div = document.getElementById('div');
+    //获取div的width
+    var width = window.getComputedStyle(div,null).width;
+    console.log(width);
+    console.log(div.style.width);
+    // alert(width);//200px
+    //修改div的width
+    // div.style.width = "890px"
+    // div.style.cssText='width:300px;'
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const prolist = [];
+    for(let i = 1; i <= 3; i++) {
+        prolist.push(new Promise((resolve,reject) => {
+            setTimeout(() => {
+                resolve({name: "name"+i})
+            },i*1000)
+        }))
+    }
+    Promise.all(prolist).then(res => {
+        console.log(res)
+    })
+    const arr = [
+        {selfMentionData:1111112},
+        {selfMentionData:111111},
+        {selfMentionData:111111222},
+        {selfMentionData:1111112223},
+        {selfMentionData:111111222}
+    ]
+    const arrr = arr.reduce((pre,curr) => {
+        if(pre.findIndex(i => i.selfMentionData === curr.selfMentionData) === -1) {
+            pre.push(curr)
+        }
+        return pre
+    },[])
+    // const arrn = [];
+    // arr.forEach(item => {
+    //     if(arrn.findIndex(i => i.selfMentionData === item.selfMentionData) === -1) {
+    //         arrn.push(item)
+    //     }
+    // })
+    console.log(arrr)
+    
+</script>
+</html>

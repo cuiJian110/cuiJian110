@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 1,2,3,
+    // let arr = ["1","2","3",]
+    // let num = 0;
+    // for(let i = 0; i < arr.length; i++) {
+    //     let first = arr[i];
+    //     for(let j = 0; j < arr.length; j++) {
+    //         let second = arr[j];
+    //         if(second !== first) {
+    //             for(let k = 0; k < arr.length; k++) {
+    //                 let third = arr[k];
+    //                 if(third !== first && third !== second) {
+    //                     console.log(first+second+third)
+    //                     num++
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+    // console.log(num)
+    var test = ["a", ["b", "c"], ["d", ["e", ["f"]], "g"]]
+    let arr_ = [];
+    function deepFlat(arr) {
+        arr.forEach(item => {
+            if(Array.isArray(item)) {
+                deepFlat(item)
+            } else {
+                arr_.push(item)
+            }
+        })
+    }
+    deepFlat(test)
+    console.log(arr_)
+</script>
+</html>

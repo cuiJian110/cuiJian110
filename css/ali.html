@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    .mcontent {
+        margin: 100px auto;
+        width: 64px;
+        cursor: pointer;
+    }
+    .mcontent:hover span{
+        color: red;
+    }
+    .titleImg {
+        width: 64px;
+        height: 64px;
+        background-image: url("https://img.alicdn.com/tfs/TB1qolSVhz1gK0jSZSgXXavwpXa-128-2688.png");
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: 100%;
+        /* background-position-y: 0; */
+    }
+    @keyframes donghua {
+        0% {
+            background-position-y: 0;
+        }
+        5% {
+            background-position-y: -64px;
+        }
+        10% {
+            background-position-y: -128px;
+        }
+        15% {
+            background-position-y: -192px;
+        }
+        20% {
+            background-position-y: -256px;
+        }
+        25% {
+            background-position-y: -320px;
+        }
+        30% {
+            background-position-y: -384px;
+        }
+        35% {
+            background-position-y: -448px;
+        }
+        40% {
+            background-position-y: -512px;
+        }
+        45% {
+            background-position-y: -576px;
+        }
+        50% {
+            background-position-y: -640px;
+        }
+        55% {
+            background-position-y: -704px;
+        }
+        60% {
+            background-position-y: -768px;
+        }
+        65% {
+            background-position-y: -832px;
+        }
+        70% {
+            background-position-y: -896px;
+        }
+        75% {
+            background-position-y: -960px;
+        }
+        80% {
+            background-position-y: -1024px;
+        }
+        85% {
+            background-position-y: -1088px;
+        }
+        90% {
+            background-position-y: -1152px;
+        }
+        95% {
+            background-position-y: -1216px;
+        }
+        100% {
+            background-position-y: -1280px;
+        }
+    }
+</style>
+<body>
+    <div class="mcontent">
+        <div class="titleImg"></div>
+        <span>热门产品</span>
+    </div>
+</body>
+<script>
+    function getEle(ele) {
+        return document.querySelector(ele)
+    }
+    const mc = getEle(".mcontent")
+    const ti = getEle(".titleImg")
+    const ticomputed = window.getComputedStyle(ti,null)
+    var timerId;
+    mc.onmouseover = function() {
+        clearInterval(timerId);
+        timerId = setInterval(() => {
+            const bpy = parseInt(ticomputed['background-position-y'])
+            if(ticomputed['background-position-y'] === "-1280px") {
+                clearInterval(timerId);
+            } else {
+                ti.style['background-position-y'] = bpy-64+"px"
+            }            
+        },25)
+    }
+    mc.onmouseout = function() {
+        clearInterval(timerId);
+        timerId = setInterval(() => {
+            const bpy = parseInt(ticomputed['background-position-y'])
+            if(ticomputed['background-position-y'] === "0px") {
+                clearInterval(timerId);
+            } else {
+                ti.style['background-position-y'] = bpy+64+"px"
+            }            
+        },25)
+    }
+</script>
+</html>
