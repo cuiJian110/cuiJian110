@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .dn {
+        display: none;
+    }
+</style>
+<body>
+    <button onclick="handleToggle()">toggle</button>
+    <img src="./images/bbb.png" alt="">
+    <div class="aa bb">
+        <img src="./images/ccc.jpg" alt="">
+    </div>
+</body>
+<script>
+    // const hide = (...arr) => {
+    //     // console.log(arr)
+    //     [...arr].forEach(item => {
+    //         item.style.display="none"
+    //     })
+    // }
+    // hide(document.querySelectorAll("img"))
+    // const hide = (...el) => [...el].forEach(e => (e.style.display = 'none'))
+
+// 事例:隐藏页面上所有`<img>`元素?
+// hide(document.querySelectorAll('img'))
+// function aa({...obj}) {
+//     console.log(name)
+// }
+// aa({name: "00",age: 90})
+// document.querySelector(".aa").classList.toggle("ccc")
+// document.querySelector(".aa").classList.toggle("ccc")
+const aa = document.querySelector(".aa")
+// console.log([...document.querySelector(".aa").classList])
+function handleToggle() {
+    // aa.classList.toggle("dn")
+    scrollToTop()
+}
+
+// 如何获取当前页面的滚动位置？
+// const getScrollPosition = (el = window) => ({
+//   x: el.pageXOffset !== undefined ? el.pageXOffset : el.scrollLeft,
+//   y: el.pageYOffset !== undefined ? el.pageYOffset : el.scrollTop
+// });
+
+// 事例
+// {x: 0, y: 200}
+// console.log(getScrollPosition())
+
+// const scrollToTop = () => {
+//   const c = document.documentElement.scrollTop || document.body.scrollTop;
+//   if (c > 0) {
+//     window.requestAnimationFrame(scrollToTop);
+//     window.scrollTo(0, c - c / 8);
+//   }
+// }
+
+// 事例
+// scrollToTop()
+
+// const delay = (fn, wait, ...args) => {
+//     console.log(args)
+//     setTimeout(fn, wait, args)
+// };
+// delay(
+//   function(...text) {
+//     console.log(...text);
+//   },
+//   1000,
+//   'laterdddd',90
+// ); 
+// ;(function() {
+//     const func = ({webName}) => webName;
+//     // console.log(func({webName: "aaa"}));
+// })();
+// ;(function() {
+//     let func = (...rest) => rest
+//     console.log(func(1,2,3,4,5));
+// })()
+// for(var i = 0; i<6; i++){
+//     ;(function (i) {
+//         setTimeout(function(){
+//             console.log(i);
+//         },1000);
+//     })(i)    
+// }
+// for(var i = 0; i<6; i++){
+        // setTimeout((...i) => { 
+        //     console.log(...i);
+            // console.log(arguments);
+        // },1000,1,2,3);
+// }
+// 形参 带上... i就是数组...
+// let c = { greeting: 'Hey!' }
+// let d
+
+// d = c
+// c.greeting = 'Hello'
+// console.log(d.greeting)
+
+// let a = 3
+// let b = new Number(3)
+// let c = 3
+
+// console.log(a == b)
+// console.log(a === b)
+// console.log(b === c)
+let arr1 = [1,2,2,8,1]
+let arr2 = [2,2,3,4,7]
+// const arrj = arr1.filter(item => arr2.findIndex(i => i===item) !== -1)
+// console.log(arrj)
+// const arrb = [...new Set([...arr1,...arr2])]
+// console.log(arrb)
+// const arrc = arrb.filter(item => arrj.findIndex(i => i===item) === -1)
+// console.log(arrc)
+// const arrj = arr1.filter(item => arr2.find(i => i===item))
+// console.log(arrj)
+function getData(arr1,arr2) {
+    let obj = {};
+    let objbing = {};
+    let objcha = {};
+    let objjiao = {};
+    [...arr1,...arr2].map(item => {
+        // console.log(item)
+        if(!obj[item]) {
+            obj[item] = item;
+            objbing[item] = item;
+            objcha[item] = item;
+        } else {
+            objjiao[item] = item;
+            delete objcha[item];
+        }
+    })
+    return {
+        jiao: Object.keys(objjiao),
+        bing: Object.keys(objbing),
+        cha: Object.keys(objcha),
+    }
+}
+console.log(getData(arr1,arr2))
+
+
+let retryRequest = [] //存放token 过期的请求
+let isRefresh = false // 是否在请求新的token 
+// HTTPresponse拦截
+axios.interceptors.response.use(res => {
+    const status = Number(res.status) || 200
+    if (status === 401) {
+        if (!isRefresh) {
+            isRefresh = true
+            return store.dispatch('RefreshToken',store.getters.refresh_token).then(data => {
+            // 这里是去请求新的token 并返回promise 然后保存新的token
+                store.commit('SET_ACCESS_TOKEN', data.data.access_token)
+                store.commit('SET_REFRESH_TOKEN', data.data.refresh_token)
+                res.config.headers['Authorization'] = data.data.access_token
+                retryRequest.forEach(cb => {
+                cb(data.data.access_token)
+                })
+                isRefresh = false
+                retryRequest = []
+                return axios(res.config)
+            })
+        }else {
+            return new Promise((resolve) => {
+                // 将resolve放进队列，用一个函数形式来保存，等token刷新后直接执行
+                retryRequest.push((token) => {
+                    res.config.headers['Authorization'] = token
+                    resolve(axios(res.config))
+                })
+            })
+        }
+    }
+ 
+})
+</script>
+</html>

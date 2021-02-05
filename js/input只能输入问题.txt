@@ -10,3 +10,5 @@
 
 只能输入中文
 @on-keyup="createReq.code=createReq.code.replace(/[\u4e00-\u9fa5]/ig,'')"
+
+https://blog.csdn.net/tt_nn_510/article/details/82710670
