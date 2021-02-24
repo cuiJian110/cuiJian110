@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .content {
+        width: 500px;
+        height: 20px;
+    }
+    .innerContent {
+        width: 0;
+        height: 20px;
+        background-color: skyblue;
+    }
+</style>
+<body>
+    <div class="content">
+        <div class="innerContent"></div>
+    </div>
+</body>
+<script>
+    let arr = Array(100)
+    console.log(arr)
+    function getEle(ele) {
+        return document.querySelector(ele);
+    }
+    const innerContent = getEle(".innerContent");
+
+    function pro(item) {
+        return new Promise((res,rej) => {
+            setTimeout(() => {
+                res(item)
+            },1000)
+        })
+    }
+    var ww = 0;
+    async function getItem() {
+
+        var timerId = setInterval(() => {
+            innerContent.style.width = ++ww+"%";
+            if(ww===100) {
+                clearTimeout(timerId)
+            }
+        }, 100);
+
+    }
+    getItem()
+</script>
+</html>
