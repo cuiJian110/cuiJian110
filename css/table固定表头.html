@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<style>
+    div{
+      /* overflow:auto; */
+      overflow-y: scroll;
+      overflow-x: hidden;
+      width:400px;
+      height:290px;
+      border:1px solid gray;
+      border-bottom: 0;
+      border-right: 0;
+    }
+    td, th {
+      border-right :1px solid gray;
+      border-bottom :1px solid gray;
+      width:100px;
+      height:30px;
+      box-sizing: border-box;
+    }
+    th {
+      background-color:lightblue;
+    }
+    table {
+      border-collapse: separate;
+      /* table-layout: fixed; */
+      width: 100%; /* 固定寬度 */
+    }
+    td:first-child, th:first-child {
+      /* position:sticky; */
+      /* 首行在左 */
+      /* left:0;  */
+      z-index:1;
+      background-color:lightpink;
+    }
+
+
+    /* 主要是这个有作用哦 */
+    thead tr th {
+      position:sticky;
+      /* 第一列最上 */
+      top:0; 
+    }
+    th:first-child{
+      z-index:2;
+      background-color:lightblue;
+    }
+    /* YOU DA YONG */
+    .tableContent {
+      height: 300px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      margin-top: 10px;
+      
+      
+    }
+    thead tr th {
+        position:sticky;
+        top:0; 
+        background: #f5f8fa
+    }
+    th:first-child{
+        z-index:2;
+    }
+     /* YOU DA YONG */
+  </style>
+
+<body>
+<div>
+  <table cellspacing="0" border="0" cellpadding="0">
+    <thead>
+    <tr>
+
+      <th></th>
+
+      <th></th>
+
+      <th></th>
+
+      <th></th>
+
+      <th></th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+    </tr>
+    <tr>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+    </tr>
+
+    <tr>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+    </tr>
+    <tr>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+    </tr>
+
+    <tr>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+    </tr>
+    <tr>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+    </tr>
+
+    <tr>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+    </tr>    <tr>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+    </tr>
+
+    <tr>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+    </tr>
+    <tr>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+    </tr>
+
+    <tr>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+    </tr>
+
+
+
+    <tr>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+    </tr>
+
+    <tr>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+    </tr>
+
+
+
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

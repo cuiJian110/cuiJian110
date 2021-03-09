@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+// let arr =  [1,2,2];
+var subsetsWithDup = function(nums) {
+    let res = [];
+    function huiSu(arr,len,start) {
+        if(arr.length === len) {
+            res.push(arr);
+            return;
+        }
+        for(let i = start; i < nums.length; i++) {
+            huiSu([...arr,nums[i]], len, i+1)
+        }
+    }
+    for(let i = 0; i <= nums.length; i++) {
+        huiSu([],i,0)
+    }
+    // return res;
+    let resArr = [...new Set([...res.filter(zi => zi.length).map(zi => String(zi))])];
+    // console.log(resArr)
+    return [ [], ...resArr.map(zi => zi.split(","))]
+};
+// console.log(subsetsWithDup(arr))
+var findString = function(words, s) {
+    let left = 0;
+    let right = words.length;
+    while(left <= right) {
+        let mid = Math.floor((left+right)/2);
+        if(words[mid] === s) {
+            return mid;
+        } else if(words[mid] > s) {
+            right = mid - 1;
+        } else {
+            left = mid + 1
+        }
+    }
+    return -1
+};
+// console.log(findString([1,2,45,56,67,78,89,888,7777,23450],7777))
+let reg = /[a-zA-Z]/;
+let str =  "Test1ng-Leet=code-Q!";
+           "Qedo1ct-eeLg=ntse-T!"
+let arr = []
+for(let i = 0; i < str.length; i++) {
+    if(reg.test(str[i])) {
+        arr.push(str[i]);
+    }
+}
+let res = [];
+for(let i = 0; i < str.length; i++) {
+    if(reg.test(str[i])) {
+        res.push(arr.pop());
+    } else {
+        res.push(str[i])
+    }
+}
+console.log(res.join(""))
+</script>
+</html>
