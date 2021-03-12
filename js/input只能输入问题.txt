@@ -11,4 +11,17 @@
 只能输入中文
 @on-keyup="createReq.code=createReq.code.replace(/[\u4e00-\u9fa5]/ig,'')"
 
+允许输入小数(两位小数)
+
+<input type="text" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" >
+
+允许输入小数(一位小数)
+
+<input type="text" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,1})?).*$/g, '$1')" >
+
+开头不能为0，且不能输入小数
+
+<input type="text" onkeyup="value=value.replace(/[^\d]/g,'').replace(/^0{1,}/g,'')" >
+
+原文链接：https://blog.csdn.net/weixin_45374484/article/details/106823541
 https://blog.csdn.net/tt_nn_510/article/details/82710670
