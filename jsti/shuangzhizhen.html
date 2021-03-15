@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // let arr = [0,1,0,3,0,2,0,4,12]
+    // var moveZeroes = function(nums) {
+    //     let fast = 0;
+    //     let slow = 0;
+    //     while(slow < nums.length) {
+            
+    //         if(fast >= nums.length) {
+    //             nums[slow] = 0;
+    //             slow++;
+    //         } else {
+    //             if(nums[fast] !== 0) {
+    //                 nums[slow] = nums[fast];
+    //                 slow++
+    //             } else {
+
+    //             }
+    //         }
+    //         fast++;
+    //     }
+    //     return nums;
+    // };
+    // console.log()
+    // moveZeroes(arr)
+// 输入：["h","e","l","l","o"]
+// 输出：["o","l","l","e","h"]
+// var reverseString = function(s) {
+//     let left = 0;
+//     let right = s.length - 1;
+//     while(left <= right) {
+//         let temp = s[left];
+//         s[left] = s[right];
+//         s[right] = temp;
+//         left++;
+//         right--;
+//     }
+//     return s;
+// };
+// console.log(reverseString(["h","e","l","l","o"]))
+// var removeDuplicates = function(nums) {
+//     let left = 0;
+//     let right = 1;
+//     let sum = 1;
+//     while(right < nums.length) {
+//         if(nums[right] === nums[left]) {
+
+//         } else {
+//             left++;
+//             nums[left] = nums[right];
+//             sum++
+//         }
+//         right++;
+//     }
+//     return left+1;
+// };
+// console.log(removeDuplicates([1,1,2]))
+// console.log(removeDuplicates([0,0,1,1,1,2,2,3,3,4,4,4,55,55,55]))
+
+// var sortedSquares = function(nums) {
+//     let left = 0;
+//     let right = nums.length - 1;
+//     let arr = [];
+//     while(left <= right) {
+//         if(Math.abs(nums[left] >= Math.abs(nums[right]))) {
+//             arr.unshift(Math.pow(nums[left],2));
+//             left++;
+//         } else {
+//             arr.unshift(Math.pow(nums[right],2));
+//             right--;
+//         }
+//     }
+//     return arr;
+// };
+// console.log(sortedSquares([-4,-1,0,3,10]))
+
+// 输入："hello"
+// 输出："holle"
+// 示例 2：
+
+// 输入："leetcode"
+// 输出："leotcede"
+// var reverseVowels = function(s) {
+//     let strArr = s.split("")
+//     let str = "aeiou";
+//     let left = 0;
+//     let right = s.length - 1;
+//     while(left <= right) {
+//         if(str.includes(s[left]) && str.includes(s[right])) {
+//             let temp = s[left]
+//             s[left] = s[right]
+//             s[right] = temp
+//             right--;
+//             left++;
+//         } else if(str.includes(s[left]) && !str.includes(s[right])) {
+//             right--;
+//         } else if(!str.includes(s[left]) && str.includes(s[right])) {
+//             left++;
+//         } else {
+//             right--;
+//             left++;
+//         }
+//     }
+//     return s.join("");
+// };
+// console.log(reverseVowels("hello"))
+
+// 输入：nums = [10,9,2,5,3,7,101,18]
+// 输出：4
+// 解释：最长递增子序列是 [2,3,7,101]，因此长度为 4 。
+// 示例 2：
+
+// 输入：nums = [0,1,0,3,2,3]
+// 输出：4
+// 示例 3：
+
+// 输入：nums = [7,7,7,7,7,7,7]
+// 输出：1
+let dp = [0,1]
+</script>
+</html>
