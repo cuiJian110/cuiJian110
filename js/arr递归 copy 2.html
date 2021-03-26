@@ -81,19 +81,21 @@ function setObjChecked(obj_) {
 	}
 	setChecked(obj_);
 }
-function getDeepSon(arr,k) {
-	let arrk = k;
-	arr.forEach(item => {
-		if(item.children && item.children.length) {
-			arrk = getDeepSon(item.children, arrk)
-		} else {
-			arrk.push(item);
-		}
-	})
+function getDeepSon(arr) {
+	let arrk = [];
+	function pushArrk(arr) {
+		arr.forEach(item => {
+			if(item.children && item.children.length) {
+				pushArrk(item.children)
+			} else {
+				arrk.push(item);
+			}
+		})
+	}
+	pushArrk(arr);
 	return arrk;
 }
-// deguisetChecked(dataList)
-// console.log(dataList)
-console.log(getDeepSon(dataList,[]))
+deguisetChecked(dataList)
+console.log(dataList)
 </script>
 </html>
