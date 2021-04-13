@@ -1,6 +1,6 @@
 限制 input 输入框只能输入纯数字
 
-1、onkeyup = "value=value.replace(/[^\d]/g,'')"
+onkeyup = "value=value.replace(/[^\d]/g,'')"
 
 有时页面需要限制输入框只能输入数字并且不能以0开头，可以通过以下方式实现
 
@@ -14,6 +14,7 @@
 允许输入小数(两位小数)
 
 <input type="text" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" >
+                     @keyup.native="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')"
 
 允许输入小数(一位小数)
 

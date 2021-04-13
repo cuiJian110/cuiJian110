@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="handleGetTime()">获取时间</button>
+</body>
+<script>
+    function getCurrentTime() {
+        const date=new Date();
+        let  newdate=date.toLocaleString('chinese', { hour12: false });   //获取24小时制，中国时间，打印出   2019/01/03/  08:40:32
+        return newdate;
+    }
+    function handleGetTime() {
+        
+        console.log(getCurrentTime())
+    }
+</script>
+</html>

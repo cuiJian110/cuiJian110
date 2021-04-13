@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .disable {
+        /* color: red; */
+        pointer-events: none;
+        cursor: default;
+        /* opacity: 0.6; */
+    }
+</style>
+<body>
+    <div onclick="waiceng()">
+        <button class="disable" id="btn" onclick="handleGo()">btn</button>
+    </div>
+</body>
+<script>
+    function waiceng() {
+        console.log("waiceng")
+    }
+    function handleGo() {
+        console.log("hangneishi")
+    }
+    const btn = document.querySelector("#btn");
+    btn.onclick = function() {
+        console.log("onclick")
+    }
+    btn.addEventListener("click",function() {
+        console.log("addeventListener")
+    })
+</script>
+</html>
