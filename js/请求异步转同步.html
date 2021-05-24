@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="https://segmentfault.com/a/1190000007535316">async await</a>
+</body>
+<script>
+    // let arr = [1000,1000,1000];
+    // function getIndex() {
+    //     return new Promise((res,rej) => {
+    //         setTimeout(() => {
+    //             // console.log(0)
+    //             res();
+    //         },2000)
+    //     })
+    // }
+    // async function getI() {
+    //     for(var  i = 0; i < arr.length; i++) {
+    //         await getIndex().then(res => {
+    //             console.log(i)
+    //         })
+    //     }
+    // }
+    // getI()
+
+    // async function testAsync() {
+    //     return Promise.resolve("hello async55");
+    // }
+    // testAsync().then(res => {
+    //     console.log(res)
+    // })
+    // const result = testAsync();
+    // console.log(result);
+    // function getSomething() {
+    //     return "something";
+    // }
+
+    // async function testAsync() {
+    //     return Promise.resolve("hello async");
+    // }
+
+    // async function test() {
+    //     const v1 = await getSomething();
+    //     const v2 = await testAsync();
+    //     console.log(v1, v2);
+    // }
+
+    // test();
+    /**
+     * 传入参数 n，表示这个函数执行的时间（毫秒）
+     * 执行的结果是 n + 200，这个值将用于下一步骤
+     */
+    function takeLongTime(n) {
+        return new Promise(resolve => {
+            setTimeout(() => resolve(n + 200), n);
+        });
+    }
+    function step1(n) {
+        console.log(`step1 with ${n}`);
+        return takeLongTime(n);
+    }
+    function step2(n) {
+        console.log(`step2 with ${n}`);
+        return takeLongTime(n);
+    }
+    function step3(n) {
+        console.log(`step3 with ${n}`);
+        return takeLongTime(n);
+    }
+    // function doIt() {
+    //     console.time("doIt");
+    //     const time1 = 300;
+    //     step1(time1).then(time2 => step2(time2)).then(time3 => step3(time3)).then(result => {
+    //         console.log(`result is ${result}`);
+    //         console.timeEnd("doIt");
+    //     });
+    // }
+
+    // doIt();
+    async function doIt() {
+        console.time("doIt");
+        const time1 = 300;
+        const time2 = await step1(time1);
+        console.log("time2",time2)
+        const time3 = await step2(time2);
+        console.log("time3",time3)
+        const result = await step3(time3);
+        console.log("result",result)
+        console.log(`result is ${result}`);
+        console.timeEnd("doIt");
+    }
+
+    doIt();
+</script>
+</html>
