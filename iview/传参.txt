@@ -12,3 +12,13 @@
       this.reqdataParamsObj_2.page = currentPage;
       this.getCommentList_();
     },
+
+<Cascader 
+v-model="listened.listenName" 
+:data="policyAndVariable" 
+filterable 
+style="width:350px;" 
+placeholder="sss" 
+clearable 
+@on-change="(value,selectedData)=>{handleListenCascader(value,selectedData,listened)}">
+</Cascader>
